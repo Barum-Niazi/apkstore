@@ -9,7 +9,7 @@ AppInfo appInfoFromJson(String str) => AppInfo.fromJson(json.decode(str));
 String appInfoToJson(AppInfo data) => json.encode(data.toJson());
 
 class AppInfo {
-  String id;
+  int id;
   String name;
   String image1Url;
   String image2Url;

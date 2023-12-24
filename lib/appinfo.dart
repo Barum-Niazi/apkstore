@@ -1,15 +1,15 @@
 // To parse this JSON data, do
 //
-//     final welcome = welcomeFromJson(jsonString);
+//     final appInfo = appInfoFromJson(jsonString);
 
 import 'dart:convert';
 
-Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
+AppInfo appInfoFromJson(String str) => AppInfo.fromJson(json.decode(str));
 
-String welcomeToJson(Welcome data) => json.encode(data.toJson());
+String appInfoToJson(AppInfo data) => json.encode(data.toJson());
 
-class Welcome {
-  int id;
+class AppInfo {
+  String id;
   String name;
   String image1Url;
   String image2Url;
@@ -19,9 +19,9 @@ class Welcome {
   String category;
   String downloadLink;
   String size;
-  double rating;
+  String rating;
 
-  Welcome({
+  AppInfo({
     required this.id,
     required this.name,
     required this.image1Url,
@@ -35,7 +35,7 @@ class Welcome {
     required this.rating,
   });
 
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+  factory AppInfo.fromJson(Map<String, dynamic> json) => AppInfo(
         id: json["id"],
         name: json["name"],
         image1Url: json["image1Url"],
@@ -46,7 +46,7 @@ class Welcome {
         category: json["category"],
         downloadLink: json["downloadLink"],
         size: json["size"],
-        rating: json["rating"]?.toDouble(),
+        rating: json["rating"],
       );
 
   Map<String, dynamic> toJson() => {

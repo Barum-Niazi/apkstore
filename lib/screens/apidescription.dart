@@ -230,7 +230,7 @@ class APIDESC extends StatelessWidget {
                               vertical: height * 0.02,
                             ),
                             child: Text(
-                              CurrentApp.description,
+                              CurrentApp.Description,
                               style: textStyle11,
                             ),
                           ),

@@ -4,9 +4,11 @@
 
 import 'dart:convert';
 
-AppInfo appInfoFromJson(String str) => AppInfo.fromJson(json.decode(str));
+List<AppInfo> samplePostsFromJson(String str) =>
+    List<AppInfo>.from(json.decode(str).map((x) => AppInfo.fromJson(x)));
 
-String appInfoToJson(AppInfo data) => json.encode(data.toJson());
+String samplePostsToJson(List<AppInfo> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class AppInfo {
   int id;

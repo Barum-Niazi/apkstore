@@ -1,14 +1,29 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_game_shop_ui/appinfo.dart';
 import 'package:flutter_game_shop_ui/screens/second_screen.dart';
 import 'package:flutter_game_shop_ui/tools/border.dart';
 import 'package:flutter_game_shop_ui/tools/colors.dart';
+import 'package:http/http.dart' as http;
 
 import '../tools/styles.dart';
 
-class FirstScreen extends StatelessWidget {
+class FirstScreen extends StatefulWidget {
   const FirstScreen({Key? key}) : super(key: key);
+
+  @override
+  State<FirstScreen> createState() => _FirstScreenState();
+}
+
+class _FirstScreenState extends State<FirstScreen> {
+  List<AppInfo> samplePosts = [];
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -374,6 +389,20 @@ class FirstScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<List<AppInfo>> getData() async {
+    final response = await http.get(Uri.parse('localhost:3000'));
+    var data = jsonDecode(response.body.toString());
+
+    if (response.statusCode == 200) {
+      for (Map<String, dynamic> index in data) {
+        samplePosts.add(AppInfo.fromJson(index));
+      }
+      return samplePosts;
+    } else {
+      return samplePosts;
+    }
   }
 }
 

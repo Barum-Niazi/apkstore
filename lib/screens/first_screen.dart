@@ -22,7 +22,7 @@ class _FirstScreenState extends State<FirstScreen> {
   @override
   void initState() {
     super.initState();
-    getData();
+    samplePosts = getData() as List<AppInfo>;
   }
 
   @override
@@ -126,8 +126,8 @@ class _FirstScreenState extends State<FirstScreen> {
                                 size: width * 0.08,
                               ),
                               SizedBox(width: width * 0.02),
-                              const Text(
-                                'Search games',
+                              Text(
+                                samplePosts[0].name,
                                 style: textStyle12,
                               ),
                             ],

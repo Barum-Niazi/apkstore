@@ -392,13 +392,15 @@ class _FirstScreenState extends State<FirstScreen> {
   }
 
   Future<List<AppInfo>> getData() async {
-    final response = await http.get(Uri.parse('localhost:3000'));
+    final response = await http.get(Uri.parse('http://localhost:3000'));
     var data = jsonDecode(response.body.toString());
-
     if (response.statusCode == 200) {
       for (Map<String, dynamic> index in data) {
         samplePosts.add(AppInfo.fromJson(index));
       }
+      // ignore: avoid_print
+      print(samplePosts.length);
+
       return samplePosts;
     } else {
       return samplePosts;

@@ -17,7 +17,7 @@ class AppInfo {
   String image2Url;
   String image3Url;
   String image4Url;
-  String instagramDescription;
+  String Description;
   String category;
   String downloadLink;
   String size;
@@ -30,7 +30,7 @@ class AppInfo {
     required this.image2Url,
     required this.image3Url,
     required this.image4Url,
-    required this.instagramDescription,
+    required this.Description,
     required this.category,
     required this.downloadLink,
     required this.size,
@@ -44,7 +44,7 @@ class AppInfo {
         image2Url: json["image2Url"],
         image3Url: json["image3Url"],
         image4Url: json["image4Url"],
-        instagramDescription: json["instagramDescription"],
+        Description: json["Description"],
         category: json["category"],
         downloadLink: json["downloadLink"],
         size: json["size"],
@@ -58,10 +58,22 @@ class AppInfo {
         "image2Url": image2Url,
         "image3Url": image3Url,
         "image4Url": image4Url,
-        "instagramDescription": instagramDescription,
+        "Description": Description,
         "category": category,
         "downloadLink": downloadLink,
         "size": size,
         "rating": rating,
       };
+}
+
+class EnumValues<T> {
+  Map<String, T> map;
+  late Map<T, String> reverseMap;
+
+  EnumValues(this.map);
+
+  Map<T, String> get reverse {
+    reverseMap = map.map((k, v) => MapEntry(v, k));
+    return reverseMap;
+  }
 }

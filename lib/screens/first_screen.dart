@@ -399,10 +399,12 @@ class _FirstScreenState extends State<FirstScreen> {
         samplePosts.add(AppInfo.fromJson(index));
       }
       // ignore: avoid_print
-      print(samplePosts.length);
+      print('apple');
 
       return samplePosts;
     } else {
+      // ignore: avoid_print
+      print('banana');
       return samplePosts;
     }
   }

@@ -22,7 +22,7 @@ class _FirstScreenState extends State<FirstScreen> {
   @override
   void initState() {
     super.initState();
-    samplePosts = getData() as List<AppInfo>;
+    getData();
   }
 
   @override

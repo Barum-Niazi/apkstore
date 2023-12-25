@@ -17,7 +17,7 @@ class AppInfo {
   String image2Url;
   String image3Url;
   String image4Url;
-  String Description;
+  String description;
   String category;
   String downloadLink;
   String size;
@@ -30,7 +30,7 @@ class AppInfo {
     required this.image2Url,
     required this.image3Url,
     required this.image4Url,
-    required this.Description,
+    required this.description,
     required this.category,
     required this.downloadLink,
     required this.size,
@@ -44,7 +44,7 @@ class AppInfo {
         image2Url: json["image2Url"],
         image3Url: json["image3Url"],
         image4Url: json["image4Url"],
-        Description: json["Description"],
+        description: json["description"],
         category: json["category"],
         downloadLink: json["downloadLink"],
         size: json["size"],
@@ -58,7 +58,7 @@ class AppInfo {
         "image2Url": image2Url,
         "image3Url": image3Url,
         "image4Url": image4Url,
-        "Description": Description,
+        "Description": description,
         "category": category,
         "downloadLink": downloadLink,
         "size": size,

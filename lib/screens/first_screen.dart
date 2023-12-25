@@ -25,6 +25,24 @@ class _FirstScreenState extends State<FirstScreen> {
     getData();
   }
 
+  Future<List<AppInfo>> getData() async {
+    final response = await http.get(Uri.parse('http://192.168.227.1:3000'));
+    var data = jsonDecode(response.body.toString());
+    if (response.statusCode == 200) {
+      for (Map<String, dynamic> index in data) {
+        samplePosts.add(AppInfo.fromJson(index));
+      }
+      // ignore: avoid_print
+      print('apple');
+
+      return samplePosts;
+    } else {
+      // ignore: avoid_print
+      print('banana');
+      return samplePosts;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -389,24 +407,6 @@ class _FirstScreenState extends State<FirstScreen> {
         ),
       ),
     );
-  }
-
-  Future<List<AppInfo>> getData() async {
-    final response = await http.get(Uri.parse('http://localhost:3000'));
-    var data = jsonDecode(response.body.toString());
-    if (response.statusCode == 200) {
-      for (Map<String, dynamic> index in data) {
-        samplePosts.add(AppInfo.fromJson(index));
-      }
-      // ignore: avoid_print
-      print('apple');
-
-      return samplePosts;
-    } else {
-      // ignore: avoid_print
-      print('banana');
-      return samplePosts;
-    }
   }
 }
 

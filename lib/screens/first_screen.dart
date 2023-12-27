@@ -551,8 +551,8 @@ class NewGamesWidget extends StatelessWidget {
                       style: textStyle4,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    const Text(
-                      'Action',
+                    Text(
+                      category,
                       style: textStyle5,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -577,8 +577,8 @@ class NewGamesWidget extends StatelessWidget {
                                 color: Colors.orange,
                                 size: width * 0.05,
                               ),
-                              const Text(
-                                '4.7',
+                              Text(
+                                rating,
                                 style: textStyle14,
                               ),
                             ],

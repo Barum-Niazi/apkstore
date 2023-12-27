@@ -71,404 +71,410 @@ class _FirstScreenState extends State<FirstScreen> {
       color: redColor1,
       child: SafeArea(
         child: Scaffold(
-          body: FutureBuilder<List<AppInfo>>(
-              future: futureData,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return CircularProgressIndicator();
-                } else if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                } else {
-                  List<AppInfo> samplePosts = snapshot.data ?? [];
-                  return Container(
-                    width: width,
-                    height: height,
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          backGroundColor1,
-                          backGroundColor2,
-                        ],
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft,
+          body: SingleChildScrollView(
+            child: FutureBuilder<List<AppInfo>>(
+                future: futureData,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else {
+                    List<AppInfo> samplePosts = snapshot.data ?? [];
+                    return Container(
+                      width: width,
+                      height: height,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            backGroundColor1,
+                            backGroundColor2,
+                          ],
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
+                        ),
                       ),
-                    ),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: width * 0.03,
-                              vertical: height * 0.01,
-                            ),
-                            // child: Row(
-                            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            //   children: [
-                            //     Container(
-                            //       padding: EdgeInsets.all(width * 0.02),
-                            //       decoration: BoxDecoration(
-                            //         color: redColor1,
-                            //         borderRadius:
-                            //             getBorderRadiusWidget(context, 1),
-                            //         border: Border.all(
-                            //             width: 2, color: Colors.black),
-                            //       ),
-                            //       child: Icon(
-                            //         Icons.person,
-                            //         color: Colors.grey.shade200,
-                            //         size: width * 0.07,
-                            //       ),
-                            //     ),
-                            //     Container(
-                            //       padding: EdgeInsets.symmetric(
-                            //         vertical: height * 0.005,
-                            //         horizontal: width * 0.02,
-                            //       ),
-                            //       decoration: BoxDecoration(
-                            //         color: Colors.orange,
-                            //         borderRadius:
-                            //             getBorderRadiusWidget(context, 1),
-                            //       ),
-                            //       child: Row(
-                            //         children: [
-                            //           Container(
-                            //             padding: EdgeInsets.all(width * 0.01),
-                            //             decoration: BoxDecoration(
-                            //               color: Colors.white,
-                            //               borderRadius:
-                            //                   getBorderRadiusWidget(context, 1),
-                            //             ),
-                            //             child: const Icon(
-                            //               Icons.thumb_up_rounded,
-                            //               color: Colors.orange,
-                            //             ),
-                            //           ),
-                            //           SizedBox(width: width * 0.02),
-                            //           const Text(
-                            //             '3,342',
-                            //             style: textStyle10,
-                            //           ),
-                            //         ],
-                            //       ),
-                            //     ),
-                            //   ],
-                            // )
-                          ),
-                          SizedBox(height: height * 0.01),
-                          Center(
-                            child: Container(
-                              width: width * 0.9,
-                              height: height * 0.06,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: width * 0.03),
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade200,
-                                borderRadius:
-                                    getBorderRadiusWidget(context, 0.03),
+                                horizontal: width * 0.03,
+                                vertical: height * 0.01,
                               ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.search,
-                                        color: Colors.grey,
-                                        size: width * 0.08,
-                                      ),
-                                      SizedBox(width: width * 0.02),
-                                      Text(
-                                        samplePosts[0].name,
-                                        style: textStyle12,
-                                      ),
-                                    ],
-                                  ),
-                                  Icon(
-                                    Icons.menu_outlined,
-                                    color: Colors.grey,
-                                    size: width * 0.07,
-                                  ),
-                                ],
+                              // child: Row(
+                              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              //   children: [
+                              //     Container(
+                              //       padding: EdgeInsets.all(width * 0.02),
+                              //       decoration: BoxDecoration(
+                              //         color: redColor1,
+                              //         borderRadius:
+                              //             getBorderRadiusWidget(context, 1),
+                              //         border: Border.all(
+                              //             width: 2, color: Colors.black),
+                              //       ),
+                              //       child: Icon(
+                              //         Icons.person,
+                              //         color: Colors.grey.shade200,
+                              //         size: width * 0.07,
+                              //       ),
+                              //     ),
+                              //     Container(
+                              //       padding: EdgeInsets.symmetric(
+                              //         vertical: height * 0.005,
+                              //         horizontal: width * 0.02,
+                              //       ),
+                              //       decoration: BoxDecoration(
+                              //         color: Colors.orange,
+                              //         borderRadius:
+                              //             getBorderRadiusWidget(context, 1),
+                              //       ),
+                              //       child: Row(
+                              //         children: [
+                              //           Container(
+                              //             padding: EdgeInsets.all(width * 0.01),
+                              //             decoration: BoxDecoration(
+                              //               color: Colors.white,
+                              //               borderRadius:
+                              //                   getBorderRadiusWidget(context, 1),
+                              //             ),
+                              //             child: const Icon(
+                              //               Icons.thumb_up_rounded,
+                              //               color: Colors.orange,
+                              //             ),
+                              //           ),
+                              //           SizedBox(width: width * 0.02),
+                              //           const Text(
+                              //             '3,342',
+                              //             style: textStyle10,
+                              //           ),
+                              //         ],
+                              //       ),
+                              //     ),
+                              //   ],
+                              // )
+                            ),
+                            SizedBox(height: height * 0.01),
+                            Center(
+                              child: Container(
+                                width: width * 0.9,
+                                height: height * 0.06,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: width * 0.03),
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade200,
+                                  borderRadius:
+                                      getBorderRadiusWidget(context, 0.03),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.search,
+                                          color: Colors.grey,
+                                          size: width * 0.08,
+                                        ),
+                                        SizedBox(width: width * 0.02),
+                                        Text(
+                                          samplePosts[0].name,
+                                          style: textStyle12,
+                                        ),
+                                      ],
+                                    ),
+                                    Icon(
+                                      Icons.menu_outlined,
+                                      color: Colors.grey,
+                                      size: width * 0.07,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(height: height * 0.01),
-                          Padding(
-                            padding: EdgeInsets.all(width * 0.03),
-                            child: const Text(
-                              'Categories',
-                              style: textStyle2,
+                            SizedBox(height: height * 0.01),
+                            Padding(
+                              padding: EdgeInsets.all(width * 0.03),
+                              child: const Text(
+                                'Categories',
+                                style: textStyle2,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: height * 0.01),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: width * 0.02),
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: height * 0.006,
-                                    horizontal: width * 0.02,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: redColor2,
-                                    borderRadius:
-                                        getBorderRadiusWidget(context, 1),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      const Icon(
-                                        Icons.directions_walk_rounded,
-                                        color: redColor1,
-                                      ),
-                                      SizedBox(width: width * 0.02),
-                                      const Text(
-                                        'Action',
-                                        style: textStyle13,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: width * 0.02),
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: height * 0.006,
-                                    horizontal: width * 0.02,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey.shade300,
-                                    borderRadius:
-                                        getBorderRadiusWidget(context, 1),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      const Icon(
-                                        Icons.car_crash_rounded,
-                                        color: Colors.black,
-                                      ),
-                                      SizedBox(width: width * 0.02),
-                                      const Text(
-                                        'Racing',
-                                        style: textStyle6,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: width * 0.02),
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: height * 0.006,
-                                    horizontal: width * 0.02,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey.shade300,
-                                    borderRadius:
-                                        getBorderRadiusWidget(context, 1),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      const Icon(
-                                        Icons.castle,
-                                        color: Colors.black,
-                                      ),
-                                      SizedBox(width: width * 0.02),
-                                      const Text(
-                                        'Strategy',
-                                        style: textStyle6,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: width * 0.02),
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: height * 0.006,
-                                    horizontal: width * 0.02,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey.shade300,
-                                    borderRadius:
-                                        getBorderRadiusWidget(context, 1),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      const Icon(
-                                        Icons.child_care,
-                                        color: Colors.black,
-                                      ),
-                                      SizedBox(width: width * 0.02),
-                                      const Text(
-                                        'Kids',
-                                        style: textStyle6,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: height * 0.01),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: width * 0.03,
-                              vertical: height * 0.02,
-                            ),
-                            child: const Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Trending',
-                                  style: textStyle2,
-                                ),
-                                Text(
-                                  'See all',
-                                  style: textStyle11,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: width * 0.03),
-                            child: SingleChildScrollView(
+                            SizedBox(height: height * 0.01),
+                            SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               child: Row(
                                 children: [
-                                  GameOverViewWidget(
-                                    width: width,
-                                    height: height,
-                                    imageName: 'assets/pic2.jpg',
-                                    name: 'Call of Duty: Going War Mobile',
-                                    star: '4.7',
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context).pushReplacement(
-                                        MaterialPageRoute(
-                                            builder: (context) => APIDESC2(
-                                                  appList: samplePosts,
-                                                  currentIndex: 0,
-                                                )),
-                                      );
-                                    },
-                                    child: Hero(
-                                      tag: 'pic',
-                                      child: GameOverViewWidget(
-                                        width: width,
-                                        height: height,
-                                        imageName: 'assets/pic3.jpg',
-                                        name: 'Spider man: Spider man Remaster',
-                                        star: '4.8',
-                                      ),
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: width * 0.02),
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: height * 0.006,
+                                      horizontal: width * 0.02,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: redColor2,
+                                      borderRadius:
+                                          getBorderRadiusWidget(context, 1),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.directions_walk_rounded,
+                                          color: redColor1,
+                                        ),
+                                        SizedBox(width: width * 0.02),
+                                        const Text(
+                                          'Action',
+                                          style: textStyle13,
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  GameOverViewWidget(
-                                    width: width,
-                                    height: height,
-                                    imageName: 'assets/pic6.jpg',
-                                    name: 'Battle Filed: World War 2',
-                                    star: '4.2',
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: width * 0.02),
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: height * 0.006,
+                                      horizontal: width * 0.02,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey.shade300,
+                                      borderRadius:
+                                          getBorderRadiusWidget(context, 1),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.car_crash_rounded,
+                                          color: Colors.black,
+                                        ),
+                                        SizedBox(width: width * 0.02),
+                                        const Text(
+                                          'Racing',
+                                          style: textStyle6,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context).pushReplacement(
-                                        MaterialPageRoute(
-                                            builder: (context) => APIDESC2(
-                                                  appList: samplePosts,
-                                                  currentIndex: 0,
-                                                )),
-                                      );
-                                    },
-                                    child: Hero(
-                                      tag: 'pic',
-                                      child: GameOverViewWidget(
-                                        width: width,
-                                        height: height,
-                                        imageName: 'assets/pic3.jpg',
-                                        name: 'Spider man: Spider man Remaster',
-                                        star: '4.8',
-                                      ),
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: width * 0.02),
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: height * 0.006,
+                                      horizontal: width * 0.02,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey.shade300,
+                                      borderRadius:
+                                          getBorderRadiusWidget(context, 1),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.castle,
+                                          color: Colors.black,
+                                        ),
+                                        SizedBox(width: width * 0.02),
+                                        const Text(
+                                          'Strategy',
+                                          style: textStyle6,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: width * 0.02),
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: height * 0.006,
+                                      horizontal: width * 0.02,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey.shade300,
+                                      borderRadius:
+                                          getBorderRadiusWidget(context, 1),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.child_care,
+                                          color: Colors.black,
+                                        ),
+                                        SizedBox(width: width * 0.02),
+                                        const Text(
+                                          'Kids',
+                                          style: textStyle6,
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: width * 0.03,
-                              vertical: height * 0.02,
-                            ),
-                            child: const Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'New Games',
-                                  style: textStyle2,
-                                ),
-                                Text(
-                                  'See all',
-                                  style: textStyle11,
-                                ),
-                              ],
-                            ),
-                          ),
-                          // NewGamesWidget(
-                          //   width: width,
-                          //   height: height,
-                          //   name: 'God of war: Ps5 edition',
-                          //   imageName: 'assets/pic5.jpg',
-                          // ),
-                          // SizedBox(height: height * 0.02),
-                          // NewGamesWidget(
-                          //   width: width,
-                          //   height: height,
-                          //   name: 'Battle filed: World War 2',
-                          //   imageName: 'assets/pic6.jpg',
-                          // ),
-                          // NewGamesWidget(
-                          //   width: width,
-                          //   height: height,
-                          //   name: 'ANAS GAME',
-                          //   imageName: 'assets/pic2.jpg',
-                          // ),
-                          // SizedBox(height: height * 0.02),
-                          // NewGamesWidget(
-                          //   width: width,
-                          //   height: height,
-                          //   name: 'Barum bonda',
-                          //   imageName: 'assets/pic3.jpg',
-                          // ),
-
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children:
-                                List.generate(samplePosts.length, (index) {
-                              return Column(
+                            SizedBox(height: height * 0.01),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: width * 0.03,
+                                vertical: height * 0.02,
+                              ),
+                              child: const Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  NewGamesWidget(
-                                    width: width,
-                                    height: height,
-                                    name: samplePosts[index].name,
-                                    imageName: samplePosts[index].image1Url,
+                                  Text(
+                                    'Trending',
+                                    style: textStyle2,
                                   ),
-                                  SizedBox(height: height * 0.02),
+                                  Text(
+                                    'See all',
+                                    style: textStyle11,
+                                  ),
                                 ],
-                              );
-                            }),
-                          )
-                        ],
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: width * 0.03),
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: [
+                                    GameOverViewWidget(
+                                      width: width,
+                                      height: height,
+                                      imageName: 'assets/pic2.jpg',
+                                      name: 'Call of Duty: Going War Mobile',
+                                      star: '4.7',
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (context) => APIDESC2(
+                                                    appList: samplePosts,
+                                                    currentIndex: 0,
+                                                  )),
+                                        );
+                                      },
+                                      child: Hero(
+                                        tag: 'pic',
+                                        child: GameOverViewWidget(
+                                          width: width,
+                                          height: height,
+                                          imageName: 'assets/pic3.jpg',
+                                          name:
+                                              'Spider man: Spider man Remaster',
+                                          star: '4.8',
+                                        ),
+                                      ),
+                                    ),
+                                    GameOverViewWidget(
+                                      width: width,
+                                      height: height,
+                                      imageName: 'assets/pic6.jpg',
+                                      name: 'Battle Filed: World War 2',
+                                      star: '4.2',
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (context) => APIDESC2(
+                                                    appList: samplePosts,
+                                                    currentIndex: 0,
+                                                  )),
+                                        );
+                                      },
+                                      child: Hero(
+                                        tag: 'pic',
+                                        child: GameOverViewWidget(
+                                          width: width,
+                                          height: height,
+                                          imageName: 'assets/pic3.jpg',
+                                          name:
+                                              'Spider man: Spider man Remaster',
+                                          star: '4.8',
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: width * 0.03,
+                                vertical: height * 0.02,
+                              ),
+                              child: const Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'New Games',
+                                    style: textStyle2,
+                                  ),
+                                  Text(
+                                    'See all',
+                                    style: textStyle11,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            // NewGamesWidget(
+                            //   width: width,
+                            //   height: height,
+                            //   name: 'God of war: Ps5 edition',
+                            //   imageName: 'assets/pic5.jpg',
+                            // ),
+                            // SizedBox(height: height * 0.02),
+                            // NewGamesWidget(
+                            //   width: width,
+                            //   height: height,
+                            //   name: 'Battle filed: World War 2',
+                            //   imageName: 'assets/pic6.jpg',
+                            // ),
+                            // NewGamesWidget(
+                            //   width: width,
+                            //   height: height,
+                            //   name: 'ANAS GAME',
+                            //   imageName: 'assets/pic2.jpg',
+                            // ),
+                            // SizedBox(height: height * 0.02),
+                            // NewGamesWidget(
+                            //   width: width,
+                            //   height: height,
+                            //   name: 'Barum bonda',
+                            //   imageName: 'assets/pic3.jpg',
+                            // ),
+
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children:
+                                  List.generate(samplePosts.length, (index) {
+                                return Column(
+                                  children: [
+                                    NewGamesWidget(
+                                      width: width,
+                                      height: height,
+                                      name: samplePosts[index].name,
+                                      imageName: samplePosts[index].image1Url,
+                                    ),
+                                    SizedBox(height: height * 0.02),
+                                  ],
+                                );
+                              }),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                }
-              }),
+                    );
+                  }
+                }),
+          ),
         ),
       ),
     );

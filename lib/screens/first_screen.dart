@@ -102,6 +102,58 @@ class _FirstScreenState extends State<FirstScreen> {
                               horizontal: width * 0.03,
                               vertical: height * 0.01,
                             ),
+                            // child: Row(
+                            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            //   children: [
+                            //     Container(
+                            //       padding: EdgeInsets.all(width * 0.02),
+                            //       decoration: BoxDecoration(
+                            //         color: redColor1,
+                            //         borderRadius:
+                            //             getBorderRadiusWidget(context, 1),
+                            //         border: Border.all(
+                            //             width: 2, color: Colors.black),
+                            //       ),
+                            //       child: Icon(
+                            //         Icons.person,
+                            //         color: Colors.grey.shade200,
+                            //         size: width * 0.07,
+                            //       ),
+                            //     ),
+                            //     Container(
+                            //       padding: EdgeInsets.symmetric(
+                            //         vertical: height * 0.005,
+                            //         horizontal: width * 0.02,
+                            //       ),
+                            //       decoration: BoxDecoration(
+                            //         color: Colors.orange,
+                            //         borderRadius:
+                            //             getBorderRadiusWidget(context, 1),
+                            //       ),
+                            //       child: Row(
+                            //         children: [
+                            //           Container(
+                            //             padding: EdgeInsets.all(width * 0.01),
+                            //             decoration: BoxDecoration(
+                            //               color: Colors.white,
+                            //               borderRadius:
+                            //                   getBorderRadiusWidget(context, 1),
+                            //             ),
+                            //             child: const Icon(
+                            //               Icons.thumb_up_rounded,
+                            //               color: Colors.orange,
+                            //             ),
+                            //           ),
+                            //           SizedBox(width: width * 0.02),
+                            //           const Text(
+                            //             '3,342',
+                            //             style: textStyle10,
+                            //           ),
+                            //         ],
+                            //       ),
+                            //     ),
+                            //   ],
+                            // )
                           ),
                           SizedBox(height: height * 0.01),
                           Center(
@@ -353,9 +405,9 @@ class _FirstScreenState extends State<FirstScreen> {
                               horizontal: width * 0.03,
                               vertical: height * 0.02,
                             ),
-                            child: const Row(
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
+                              children: const [
                                 Text(
                                   'New Games',
                                   style: textStyle2,
@@ -367,55 +419,32 @@ class _FirstScreenState extends State<FirstScreen> {
                               ],
                             ),
                           ),
-                          // NewGamesWidget(
-                          //   width: width,
-                          //   height: height,
-                          //   name: 'God of war: Ps5 edition',
-                          //   imageName: 'assets/pic5.jpg',
-                          // ),
-                          // SizedBox(height: height * 0.02),
-                          // NewGamesWidget(
-                          //   width: width,
-                          //   height: height,
-                          //   name: 'Battle filed: World War 2',
-                          //   imageName: 'assets/pic6.jpg',
-                          // ),
-                          // NewGamesWidget(
-                          //   width: width,
-                          //   height: height,
-                          //   name: 'ANAS GAME',
-                          //   imageName: 'assets/pic2.jpg',
-                          // ),
-                          // SizedBox(height: height * 0.02),
-                          // NewGamesWidget(
-                          //   width: width,
-                          //   height: height,
-                          //   name: 'Barum bonda',
-                          //   imageName: 'assets/pic3.jpg',
-                          // ),
-                          // for (int index = 0;
-                          //     index < samplePosts.length;
-                          //     index++)
-                          //   NewGamesWidget(
-                          //     width: width,
-                          //     height: height,
-                          //     name: samplePosts[index].name,
-                          //     imageName: samplePosts[index].image1Url,
-                          //   ),
-                          for (int index = 0;
-                              index < samplePosts.length;
-                              index++)
-                            Column(
-                              children: [
-                                NewGamesWidget(
-                                  width: width,
-                                  height: height,
-                                  name: samplePosts[index].name,
-                                  imageName: samplePosts[index].image1Url,
-                                ),
-                                SizedBox(height: height * 0.02),
-                              ],
-                            ),
+                          NewGamesWidget(
+                            width: width,
+                            height: height,
+                            name: 'God of war: Ps5 edition',
+                            imageName: 'assets/pic5.jpg',
+                          ),
+                          SizedBox(height: height * 0.02),
+                          NewGamesWidget(
+                            width: width,
+                            height: height,
+                            name: 'Battle filed: World War 2',
+                            imageName: 'assets/pic6.jpg',
+                          ),
+                          NewGamesWidget(
+                            width: width,
+                            height: height,
+                            name: 'ANAS GAME',
+                            imageName: 'assets/pic2.jpg',
+                          ),
+                          SizedBox(height: height * 0.02),
+                          NewGamesWidget(
+                            width: width,
+                            height: height,
+                            name: 'Barum bonda',
+                            imageName: 'assets/pic3.jpg',
+                          ),
                         ],
                       ),
                     ),

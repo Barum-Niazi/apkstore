@@ -351,7 +351,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                     onTap: () {
                                       Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(
-                                            builder: (context) => APIDESC(
+                                            builder: (context) => APIDESC2(
                                                   appList: samplePosts,
                                                   currentIndex: 0,
                                                 )),

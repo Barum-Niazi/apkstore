@@ -27,7 +27,7 @@ class BeginScreen extends StatelessWidget {
         ],
       ),
       splashIconSize: 100,
-      nextScreen: const FirstScreen(),
+      nextScreen: FirstScreen(),
       splashTransition: SplashTransition.fadeTransition,
       pageTransitionType: PageTransitionType.fade,
       backgroundColor: redColor1,

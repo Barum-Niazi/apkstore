@@ -28,7 +28,7 @@ class APIDESC2 extends StatelessWidget {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              expandedHeight: height * 0.5,
+              expandedHeight: height * 0.1,
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
                 background: Hero(

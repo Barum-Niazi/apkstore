@@ -29,7 +29,8 @@ class APIDESC2 extends StatelessWidget {
           Stack(
             children: [
               Hero(
-                tag: 'pic',
+                tag:
+                    'main_image_${currentApp.id}', // Unique tag for the main image
                 child: Image.asset(
                   currentApp.image1Url,
                   width: width,
@@ -261,13 +262,13 @@ class APIDESC2 extends StatelessWidget {
                                     MaterialPageRoute(
                                       builder: (context) => ImageScreen(
                                         image: currentApp.image2Url,
-                                        hero: 'detail7',
+                                        hero: 'detail_${currentApp.id}_1',
                                       ),
                                     ),
                                   );
                                 },
                                 child: Hero(
-                                  tag: 'detail7',
+                                  tag: 'detail_${currentApp.id}_1',
                                   child: Image.asset(
                                     currentApp.image2Url,
                                     width: width * 0.25,
@@ -286,13 +287,13 @@ class APIDESC2 extends StatelessWidget {
                                     MaterialPageRoute(
                                       builder: (context) => ImageScreen(
                                         image: currentApp.image3Url,
-                                        hero: 'detail8',
+                                        hero: 'detail_${currentApp.id}_2',
                                       ),
                                     ),
                                   );
                                 },
                                 child: Hero(
-                                  tag: 'detail8',
+                                  tag: 'detail_${currentApp.id}_2',
                                   child: Image.asset(
                                     currentApp.image3Url,
                                     width: width * 0.25,
@@ -311,13 +312,13 @@ class APIDESC2 extends StatelessWidget {
                                     MaterialPageRoute(
                                       builder: (context) => ImageScreen(
                                         image: currentApp.image4Url,
-                                        hero: 'detail9',
+                                        hero: 'detail_${currentApp.id}_3',
                                       ),
                                     ),
                                   );
                                 },
                                 child: Hero(
-                                  tag: 'detail9',
+                                  tag: 'detail_${currentApp.id}_3',
                                   child: Image.asset(
                                     currentApp.image4Url,
                                     width: width * 0.25,

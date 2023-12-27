@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_game_shop_ui/appinfo.dart';
+import 'package:flutter_game_shop_ui/screens/api.dart';
 import 'package:flutter_game_shop_ui/screens/apidescription.dart';
 import 'package:flutter_game_shop_ui/screens/second_screen.dart';
 import 'package:flutter_game_shop_ui/tools/border.dart';
@@ -378,7 +379,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                     onTap: () {
                                       Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(
-                                            builder: (context) => APIDESC(
+                                            builder: (context) => APIDESC2(
                                                   appList: samplePosts,
                                                   currentIndex: 0,
                                                 )),

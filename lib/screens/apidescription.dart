@@ -22,8 +22,8 @@ class APIDESC extends StatelessWidget {
 
     return Container(
       color: redColor1,
-      child: SingleChildScrollView(
-        child: SafeArea(
+      child: SafeArea(
+        child: SingleChildScrollView(
           child: Scaffold(
             body: SizedBox(
               width: width,
@@ -32,7 +32,7 @@ class APIDESC extends StatelessWidget {
                 children: [
                   Hero(
                     tag: 'pic',
-                    child: Image.network(
+                    child: Image.asset(
                       CurrentApp.image1Url,
                       width: width,
                       height: height * 0.5,
@@ -268,7 +268,7 @@ class APIDESC extends StatelessWidget {
                                     },
                                     child: Hero(
                                       tag: 'detail7',
-                                      child: Image.network(
+                                      child: Image.asset(
                                         CurrentApp.image2Url,
                                         width: width * 0.25,
                                         height: height * 0.12,
@@ -293,7 +293,7 @@ class APIDESC extends StatelessWidget {
                                     },
                                     child: Hero(
                                       tag: 'detail8',
-                                      child: Image.network(
+                                      child: Image.asset(
                                         CurrentApp.image3Url,
                                         width: width * 0.25,
                                         height: height * 0.12,
@@ -318,7 +318,7 @@ class APIDESC extends StatelessWidget {
                                     },
                                     child: Hero(
                                       tag: 'detail9',
-                                      child: Image.network(
+                                      child: Image.asset(
                                         CurrentApp.image4Url,
                                         width: width * 0.25,
                                         height: height * 0.12,

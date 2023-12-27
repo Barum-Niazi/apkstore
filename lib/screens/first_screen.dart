@@ -67,43 +67,37 @@ class _FirstScreenState extends State<FirstScreen> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+
     return Container(
       color: redColor1,
       child: SafeArea(
         child: Scaffold(
           body: FutureBuilder<List<AppInfo>>(
-              future: futureData,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return CircularProgressIndicator();
-                } else if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                } else {
-                  List<AppInfo> samplePosts = snapshot.data ?? [];
-                  return Container(
-                    width: width,
-                    height: height,
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          backGroundColor1,
-                          backGroundColor2,
-                        ],
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft,
-                      ),
+            future: futureData,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(child: Text('Error: ${snapshot.error}'));
+              } else {
+                List<AppInfo> samplePosts = snapshot.data ?? [];
+
+                return Container(
+                  width: width,
+                  height: height,
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [backGroundColor1, backGroundColor2],
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
                     ),
-                    child: SingleChildScrollView(
+                  ),
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.all(width * 0.03),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: width * 0.03,
-                              vertical: height * 0.01,
-                            ),
-                          ),
-                          SizedBox(height: height * 0.01),
                           Center(
                             child: Container(
                               width: width * 0.9,
@@ -128,7 +122,9 @@ class _FirstScreenState extends State<FirstScreen> {
                                       ),
                                       SizedBox(width: width * 0.02),
                                       Text(
-                                        samplePosts[0].name,
+                                        samplePosts.isNotEmpty
+                                            ? samplePosts[0].name
+                                            : '',
                                         style: textStyle12,
                                       ),
                                     ],
@@ -282,70 +278,36 @@ class _FirstScreenState extends State<FirstScreen> {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(left: width * 0.03),
-                            child: SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                children: [
-                                  GameOverViewWidget(
-                                    width: width,
-                                    height: height,
-                                    imageName: 'assets/pic2.jpg',
-                                    name: 'Call of Duty: Going War Mobile',
-                                    star: '4.7',
-                                  ),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                for (int index = 0;
+                                    index < samplePosts.length;
+                                    index++)
                                   GestureDetector(
                                     onTap: () {
                                       Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(
-                                            builder: (context) => APIDESC2(
-                                                  appList: samplePosts,
-                                                  currentIndex: 0,
-                                                )),
+                                          builder: (context) => APIDESC2(
+                                            appList: samplePosts,
+                                            currentIndex: index,
+                                          ),
+                                        ),
                                       );
                                     },
                                     child: Hero(
-                                      tag: 'pic',
+                                      tag: 'pic$index',
                                       child: GameOverViewWidget(
                                         width: width,
                                         height: height,
-                                        imageName: 'assets/pic3.jpg',
-                                        name: 'Spider man: Spider man Remaster',
+                                        imageName: samplePosts[index].image1Url,
+                                        name: samplePosts[index].name,
                                         star: '4.8',
                                       ),
                                     ),
                                   ),
-                                  GameOverViewWidget(
-                                    width: width,
-                                    height: height,
-                                    imageName: 'assets/pic6.jpg',
-                                    name: 'Battle Filed: World War 2',
-                                    star: '4.2',
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context).pushReplacement(
-                                        MaterialPageRoute(
-                                            builder: (context) => APIDESC2(
-                                                  appList: samplePosts,
-                                                  currentIndex: 0,
-                                                )),
-                                      );
-                                    },
-                                    child: Hero(
-                                      tag: 'pic',
-                                      child: GameOverViewWidget(
-                                        width: width,
-                                        height: height,
-                                        imageName: 'assets/pic3.jpg',
-                                        name: 'Spider man: Spider man Remaster',
-                                        star: '4.8',
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              ],
                             ),
                           ),
                           Padding(
@@ -367,81 +329,31 @@ class _FirstScreenState extends State<FirstScreen> {
                               ],
                             ),
                           ),
-                          // NewGamesWidget(
-                          //   width: width,
-                          //   height: height,
-                          //   name: 'God of war: Ps5 edition',
-                          //   imageName: 'assets/pic5.jpg',
-                          // ),
-                          // SizedBox(height: height * 0.02),
-                          // NewGamesWidget(
-                          //   width: width,
-                          //   height: height,
-                          //   name: 'Battle filed: World War 2',
-                          //   imageName: 'assets/pic6.jpg',
-                          // ),
-                          // NewGamesWidget(
-                          //   width: width,
-                          //   height: height,
-                          //   name: 'ANAS GAME',
-                          //   imageName: 'assets/pic2.jpg',
-                          // ),
-                          // SizedBox(height: height * 0.02),
-                          // NewGamesWidget(
-                          //   width: width,
-                          //   height: height,
-                          //   name: 'Barum bonda',
-                          //   imageName: 'assets/pic3.jpg',
-                          // ),
-                          // for (int index = 0;
-                          //     index < samplePosts.length;
-                          //     index++)
-                          //   NewGamesWidget(
-                          //     width: width,
-                          //     height: height,
-                          //     name: samplePosts[index].name,
-                          //     imageName: samplePosts[index].image1Url,
-                          //   ),
-                          // for (int index = 0;
-                          //     index < samplePosts.length;
-                          //     index++)
-                          //   Column(
-                          //     children: [
-                          //       NewGamesWidget(
-                          //         width: width,
-                          //         height: height,
-                          //         name: samplePosts[index].name,
-                          //         imageName: samplePosts[index].image1Url,
-                          //       ),
-                          //       SizedBox(height: height * 0.02),
-                          //     ],
-                          //   ),
-                          Padding(
-                            padding: EdgeInsets.only(left: width * 0.03),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children:
-                                  List.generate(samplePosts.length, (index) {
-                                return Column(
-                                  children: [
-                                    NewGamesWidget(
-                                      width: width,
-                                      height: height,
-                                      name: samplePosts[index].name,
-                                      imageName: samplePosts[index].image1Url,
-                                    ),
-                                    SizedBox(height: height * 0.02),
-                                  ],
-                                );
-                              }),
-                            ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children:
+                                List.generate(samplePosts.length, (index) {
+                              return Column(
+                                children: [
+                                  NewGamesWidget(
+                                    width: width,
+                                    height: height,
+                                    name: samplePosts[index].name,
+                                    imageName: samplePosts[index].image1Url,
+                                  ),
+                                  SizedBox(height: height * 0.02),
+                                ],
+                              );
+                            }),
                           ),
                         ],
                       ),
                     ),
-                  );
-                }
-              }),
+                  ),
+                );
+              }
+            },
+          ),
         ),
       ),
     );

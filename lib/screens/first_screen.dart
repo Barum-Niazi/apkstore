@@ -350,8 +350,10 @@ class _FirstScreenState extends State<FirstScreen> {
                                     onTap: () {
                                       Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                SecondScreen()),
+                                            builder: (context) => APIDESC(
+                                                  appList: samplePosts,
+                                                  currentIndex: 0,
+                                                )),
                                       );
                                     },
                                     child: Hero(

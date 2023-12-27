@@ -15,7 +15,7 @@ class BeginScreen extends StatelessWidget {
         children: [
           Image.asset('assets/pic1.png', height: 20.0),
           SizedBox(height: 20.0),
-          Text(
+          const Text(
             'Bringing gaming into\nyour daily routine',
             style: TextStyle(
               color: Colors.white,
@@ -26,7 +26,7 @@ class BeginScreen extends StatelessWidget {
         ],
       ),
       splashIconSize: 100,
-      nextScreen: MainScreen(),
+      nextScreen: const MainScreen(),
       splashTransition: SplashTransition.fadeTransition,
       pageTransitionType: PageTransitionType.fade,
       backgroundColor: redColor1,

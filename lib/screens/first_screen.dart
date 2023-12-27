@@ -462,6 +462,8 @@ class _FirstScreenState extends State<FirstScreen> {
                                       height: height,
                                       name: samplePosts[index].name,
                                       imageName: samplePosts[index].image1Url,
+                                      category: samplePosts[index].category,
+                                      rating: samplePosts[index].rating,
                                     ),
                                     SizedBox(height: height * 0.02),
                                   ],
@@ -488,12 +490,16 @@ class NewGamesWidget extends StatelessWidget {
     required this.height,
     required this.imageName,
     required this.name,
+    required this.category,
+    required this.rating,
   }) : super(key: key);
 
   final double width;
   final double height;
   final String imageName;
   final String name;
+  final String rating;
+  final String category;
 
   @override
   Widget build(BuildContext context) {
@@ -523,7 +529,7 @@ class NewGamesWidget extends StatelessWidget {
               flex: 2,
               child: ClipRRect(
                 borderRadius: getBorderRadiusWidget(context, 0.05),
-                child: Image.asset(
+                child: Image.network(
                   imageName,
                   width: width * 0.4,
                   height: height,

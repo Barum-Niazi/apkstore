@@ -34,18 +34,18 @@ class MainScreen extends StatelessWidget {
             title: ("Home"),
             activeColorPrimary: redColor2,
             activeColorSecondary: redColor1),
-        // PersistentBottomNavBarItem(
-        //     icon: const Icon(
-        //       Icons.location_on,
-        //       color: redColor1,
-        //     ),
-        //     inactiveIcon: Icon(
-        //       Icons.location_on_outlined,
-        //       color: Colors.grey.shade800,
-        //     ),
-        //     title: ("Location"),
-        //     activeColorPrimary: redColor2,
-        //     activeColorSecondary: redColor1),
+        PersistentBottomNavBarItem(
+            icon: const Icon(
+              Icons.location_on,
+              color: redColor1,
+            ),
+            inactiveIcon: Icon(
+              Icons.location_on_outlined,
+              color: Colors.grey.shade800,
+            ),
+            title: ("Location"),
+            activeColorPrimary: redColor2,
+            activeColorSecondary: redColor1),
         PersistentBottomNavBarItem(
             icon: const Icon(
               Icons.notifications,

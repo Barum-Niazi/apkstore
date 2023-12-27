@@ -402,40 +402,20 @@ class _FirstScreenState extends State<FirstScreen> {
                           //     name: samplePosts[index].name,
                           //     imageName: samplePosts[index].image1Url,
                           //   ),
-                          // for (int index = 0;
-                          //     index < samplePosts.length;
-                          //     index++)
-                          //   Column(
-                          //     children: [
-                          //       NewGamesWidget(
-                          //         width: width,
-                          //         height: height,
-                          //         name: samplePosts[index].name,
-                          //         imageName: samplePosts[index].image1Url,
-                          //       ),
-                          //       SizedBox(height: height * 0.02),
-                          //     ],
-                          //   ),
-                          Padding(
-                            padding: EdgeInsets.only(left: width * 0.03),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children:
-                                  List.generate(samplePosts.length, (index) {
-                                return Column(
-                                  children: [
-                                    NewGamesWidget(
-                                      width: width,
-                                      height: height,
-                                      name: samplePosts[index].name,
-                                      imageName: samplePosts[index].image1Url,
-                                    ),
-                                    SizedBox(height: height * 0.02),
-                                  ],
-                                );
-                              }),
+                          for (int index = 0;
+                              index < samplePosts.length;
+                              index++)
+                            Column(
+                              children: [
+                                NewGamesWidget(
+                                  width: width,
+                                  height: height,
+                                  name: samplePosts[index].name,
+                                  imageName: samplePosts[index].image1Url,
+                                ),
+                                SizedBox(height: height * 0.02),
+                              ],
                             ),
-                          ),
                         ],
                       ),
                     ),

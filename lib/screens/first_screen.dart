@@ -405,9 +405,9 @@ class _FirstScreenState extends State<FirstScreen> {
                               horizontal: width * 0.03,
                               vertical: height * 0.02,
                             ),
-                            child: Row(
+                            child: const Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text(
                                   'New Games',
                                   style: textStyle2,
@@ -419,32 +419,50 @@ class _FirstScreenState extends State<FirstScreen> {
                               ],
                             ),
                           ),
-                          NewGamesWidget(
-                            width: width,
-                            height: height,
-                            name: 'God of war: Ps5 edition',
-                            imageName: 'assets/pic5.jpg',
-                          ),
-                          SizedBox(height: height * 0.02),
-                          NewGamesWidget(
-                            width: width,
-                            height: height,
-                            name: 'Battle filed: World War 2',
-                            imageName: 'assets/pic6.jpg',
-                          ),
-                          NewGamesWidget(
-                            width: width,
-                            height: height,
-                            name: 'ANAS GAME',
-                            imageName: 'assets/pic2.jpg',
-                          ),
-                          SizedBox(height: height * 0.02),
-                          NewGamesWidget(
-                            width: width,
-                            height: height,
-                            name: 'Barum bonda',
-                            imageName: 'assets/pic3.jpg',
-                          ),
+                          // NewGamesWidget(
+                          //   width: width,
+                          //   height: height,
+                          //   name: 'God of war: Ps5 edition',
+                          //   imageName: 'assets/pic5.jpg',
+                          // ),
+                          // SizedBox(height: height * 0.02),
+                          // NewGamesWidget(
+                          //   width: width,
+                          //   height: height,
+                          //   name: 'Battle filed: World War 2',
+                          //   imageName: 'assets/pic6.jpg',
+                          // ),
+                          // NewGamesWidget(
+                          //   width: width,
+                          //   height: height,
+                          //   name: 'ANAS GAME',
+                          //   imageName: 'assets/pic2.jpg',
+                          // ),
+                          // SizedBox(height: height * 0.02),
+                          // NewGamesWidget(
+                          //   width: width,
+                          //   height: height,
+                          //   name: 'Barum bonda',
+                          //   imageName: 'assets/pic3.jpg',
+                          // ),
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children:
+                                List.generate(samplePosts.length, (index) {
+                              return Column(
+                                children: [
+                                  NewGamesWidget(
+                                    width: width,
+                                    height: height,
+                                    name: samplePosts[index].name,
+                                    imageName: samplePosts[index].image1Url,
+                                  ),
+                                  SizedBox(height: height * 0.02),
+                                ],
+                              );
+                            }),
+                          )
                         ],
                       ),
                     ),

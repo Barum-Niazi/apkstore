@@ -31,7 +31,7 @@ class APIDESC2 extends StatelessWidget {
               Hero(
                 tag:
                     'main_image_${currentApp.id}', // Unique tag for the main image
-                child: Image.asset(
+                child: Image.network(
                   currentApp.image1Url,
                   width: width,
                   height: height * 0.5,
@@ -269,7 +269,7 @@ class APIDESC2 extends StatelessWidget {
                                 },
                                 child: Hero(
                                   tag: 'detail_${currentApp.id}_1',
-                                  child: Image.asset(
+                                  child: Image.network(
                                     currentApp.image2Url,
                                     width: width * 0.25,
                                     height: height * 0.12,
@@ -294,7 +294,7 @@ class APIDESC2 extends StatelessWidget {
                                 },
                                 child: Hero(
                                   tag: 'detail_${currentApp.id}_2',
-                                  child: Image.asset(
+                                  child: Image.network(
                                     currentApp.image3Url,
                                     width: width * 0.25,
                                     height: height * 0.12,
@@ -319,7 +319,7 @@ class APIDESC2 extends StatelessWidget {
                                 },
                                 child: Hero(
                                   tag: 'detail_${currentApp.id}_3',
-                                  child: Image.asset(
+                                  child: Image.network(
                                     currentApp.image4Url,
                                     width: width * 0.25,
                                     height: height * 0.12,

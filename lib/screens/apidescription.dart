@@ -133,6 +133,133 @@ class APIDESC extends StatelessWidget {
                               ],
                             ),
                           ),
+                          SizedBox(
+                            width: width,
+                            child: Text(
+                              'About $CurrentApp.name',
+                              style: textStyle3,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: width * 0.02,
+                              vertical: height * 0.02,
+                            ),
+                            child: Text(
+                              CurrentApp.description,
+                              style: textStyle11,
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'App Pictures',
+                                style: textStyle3,
+                              ),
+                              Text(
+                                'See all',
+                                style: textStyle11,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              ClipRRect(
+                                borderRadius:
+                                    getBorderRadiusWidget(context, 0.05),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                        builder: (context) => ImageScreen(
+                                          image: CurrentApp.image2Url,
+                                          hero: 'detail7',
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Hero(
+                                    tag: 'detail7',
+                                    child: Image.network(
+                                      CurrentApp.image2Url,
+                                      width: width * 0.25,
+                                      height: height * 0.12,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              ClipRRect(
+                                borderRadius:
+                                    getBorderRadiusWidget(context, 0.05),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                        builder: (context) => ImageScreen(
+                                          image: CurrentApp.image3Url,
+                                          hero: 'detail8',
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Hero(
+                                    tag: 'detail8',
+                                    child: Image.network(
+                                      CurrentApp.image3Url,
+                                      width: width * 0.25,
+                                      height: height * 0.12,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              ClipRRect(
+                                borderRadius:
+                                    getBorderRadiusWidget(context, 0.05),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                        builder: (context) => ImageScreen(
+                                          image: CurrentApp.image4Url,
+                                          hero: 'detail9',
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Hero(
+                                    tag: 'detail9',
+                                    child: Image.network(
+                                      CurrentApp.image4Url,
+                                      width: width * 0.25,
+                                      height: height * 0.12,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: height * 0.02),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: redColor1,
+                              shape: getShapeWidget(context, 1),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: width * 0.2,
+                                vertical: height * 0.015,
+                              ),
+                            ),
+                            onPressed: () {},
+                            child: const Text(
+                              'Install Game',
+                              style: textStyle8,
+                            ),
+                          ),
                         ],
                       ),
                     ),

@@ -220,7 +220,7 @@ class APIDESC extends StatelessWidget {
                           SizedBox(
                             width: width,
                             child: Text(
-                              'About $CurrentApp.name',
+                              'About' + ' ' + CurrentApp.name,
                               style: textStyle3,
                             ),
                           ),

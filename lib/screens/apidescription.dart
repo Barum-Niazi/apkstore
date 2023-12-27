@@ -219,8 +219,8 @@ class APIDESC extends StatelessWidget {
                           ),
                           SizedBox(
                             width: width,
-                            child: const Text(
-                              'About game',
+                            child: Text(
+                              'About $CurrentApp.name',
                               style: textStyle3,
                             ),
                           ),
@@ -239,7 +239,7 @@ class APIDESC extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Game Pictures',
+                                'App Pictures',
                                 style: textStyle3,
                               ),
                               Text(

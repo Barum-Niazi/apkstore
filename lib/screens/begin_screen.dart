@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_game_shop_ui/screens/first_screen%20darkmode.dart';
 import 'package:flutter_game_shop_ui/screens/main_screen.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:page_transition/page_transition.dart';
@@ -26,7 +27,7 @@ class BeginScreen extends StatelessWidget {
         ],
       ),
       splashIconSize: 100,
-      nextScreen: const MainScreen(),
+      nextScreen: const FirstScreen(),
       splashTransition: SplashTransition.fadeTransition,
       pageTransitionType: PageTransitionType.fade,
       backgroundColor: redColor1,

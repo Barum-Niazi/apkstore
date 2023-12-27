@@ -79,16 +79,16 @@ class APIDESC extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: height * 0.55,
-                  child: Center(
-                    child: Icon(
-                      Icons.play_circle,
-                      color: Colors.white,
-                      size: width * 0.12,
-                    ),
-                  ),
-                ),
+                // SizedBox(
+                //   height: height * 0.55,
+                //   child: Center(
+                //     child: Icon(
+                //       Icons.play_circle,
+                //       color: Colors.white,
+                //       size: width * 0.12,
+                //     ),
+                //   ),
+                // ),
                 Positioned(
                   bottom: height * 0.08,
                   child: Container(
@@ -190,14 +190,14 @@ class APIDESC extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                const Row(
+                                Row(
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.star_rate_rounded,
                                       color: redColor1,
                                     ),
                                     Text(
-                                      'Rated',
+                                      CurrentApp.rating,
                                       style: textStyle7,
                                     ),
                                   ],
@@ -232,6 +232,7 @@ class APIDESC extends StatelessWidget {
                             child: Text(
                               CurrentApp.description,
                               style: textStyle11,
+                              textAlign: TextAlign.left,
                             ),
                           ),
                           const Row(

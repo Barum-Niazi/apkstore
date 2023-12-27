@@ -414,7 +414,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'New Games',
+                                    'New Apps',
                                     style: textStyle2,
                                   ),
                                   Text(

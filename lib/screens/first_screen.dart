@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_game_shop_ui/appinfo.dart';
+import 'package:flutter_game_shop_ui/screens/apidescription.dart';
 import 'package:flutter_game_shop_ui/screens/second_screen.dart';
 import 'package:flutter_game_shop_ui/tools/border.dart';
 import 'package:flutter_game_shop_ui/tools/colors.dart';
@@ -318,9 +319,9 @@ class _FirstScreenState extends State<FirstScreen> {
                               horizontal: width * 0.03,
                               vertical: height * 0.02,
                             ),
-                            child: Row(
+                            child: const Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text(
                                   'Trending',
                                   style: textStyle2,
@@ -375,8 +376,10 @@ class _FirstScreenState extends State<FirstScreen> {
                                     onTap: () {
                                       Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                SecondScreen()),
+                                            builder: (context) => APIDESC(
+                                                  appList: samplePosts,
+                                                  currentIndex: 0,
+                                                )),
                                       );
                                     },
                                     child: Hero(

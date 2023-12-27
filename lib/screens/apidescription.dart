@@ -31,7 +31,7 @@ class APIDESC extends StatelessWidget {
               children: [
                 Hero(
                   tag: 'pic',
-                  child: Image.asset(
+                  child: Image.network(
                     CurrentApp.image1Url,
                     width: width,
                     height: height * 0.5,
@@ -266,7 +266,7 @@ class APIDESC extends StatelessWidget {
                                   },
                                   child: Hero(
                                     tag: 'detail7',
-                                    child: Image.asset(
+                                    child: Image.network(
                                       CurrentApp.image2Url,
                                       width: width * 0.25,
                                       height: height * 0.12,
@@ -291,7 +291,7 @@ class APIDESC extends StatelessWidget {
                                   },
                                   child: Hero(
                                     tag: 'detail8',
-                                    child: Image.asset(
+                                    child: Image.network(
                                       CurrentApp.image3Url,
                                       width: width * 0.25,
                                       height: height * 0.12,
@@ -316,7 +316,7 @@ class APIDESC extends StatelessWidget {
                                   },
                                   child: Hero(
                                     tag: 'detail9',
-                                    child: Image.asset(
+                                    child: Image.network(
                                       CurrentApp.image4Url,
                                       width: width * 0.25,
                                       height: height * 0.12,

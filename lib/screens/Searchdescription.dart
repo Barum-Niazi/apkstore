@@ -7,18 +7,21 @@ import 'package:flutter_game_shop_ui/tools/colors.dart';
 
 import '../tools/styles.dart';
 
-class APIDESC extends StatelessWidget {
-  APIDESC({
-    Key? key,
-    required this.appList,
-    required this.currentIndex,
-  }) : super(key: key);
+class SearchDesc extends StatelessWidget {
+  SearchDesc(
+      {Key? key,
+      required this.appList,
+      required this.name,
+      required this.currentIndex})
+      : super(key: key);
 
   final List<AppInfo> appList;
-  final int currentIndex;
+  final String name;
+  int currentIndex;
 
   @override
   Widget build(BuildContext context) {
+    currentIndex = findIndex(appList, name);
     AppInfo currentApp = appList[currentIndex];
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
@@ -327,4 +330,13 @@ class APIDESC extends StatelessWidget {
       ),
     );
   }
+}
+
+int findIndex(List<AppInfo> appList, String name) {
+  for (int i = 0; i < appList.length; i++) {
+    if (appList[i].name == name) {
+      return i;
+    }
+  }
+  return 1;
 }

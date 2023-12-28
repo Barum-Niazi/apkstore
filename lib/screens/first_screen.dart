@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_game_shop_ui/appinfo.dart';
+import 'package:flutter_game_shop_ui/screens/Searchdescription.dart';
 import 'package:flutter_game_shop_ui/screens/api.dart';
 import 'package:flutter_game_shop_ui/screens/apidescription.dart';
 import 'package:flutter_game_shop_ui/screens/gameWidget.dart';
@@ -34,7 +35,7 @@ class _FirstScreenState extends State<FirstScreen> {
   }
 
   Future<List<AppInfo>> getData() async {
-    final response = await http.get(Uri.parse('http://10.135.0.98:3000'));
+    final response = await http.get(Uri.parse('http://172.20.10.2:3000'));
     var data = jsonDecode(response.body.toString());
     if (response.statusCode == 200) {
       List<AppInfo> posts = [];
@@ -176,10 +177,10 @@ class _FirstScreenState extends State<FirstScreen> {
                                         // Navigate to APIDESC page with the search query
                                         Navigator.of(context).push(
                                           MaterialPageRoute(
-                                            builder: (context) => APIDESC(
+                                            builder: (context) => SearchDesc(
                                               appList: samplePosts,
-                                              currentIndex: 0,
                                               name: name,
+                                              currentIndex: 0,
                                             ),
                                           ),
                                         );
@@ -355,7 +356,6 @@ class _FirstScreenState extends State<FirstScreen> {
                                               builder: (context) => APIDESC(
                                                     appList: samplePosts,
                                                     currentIndex: 0,
-                                                    name: 'mariam ',
                                                   )),
                                         );
                                       },
@@ -385,7 +385,6 @@ class _FirstScreenState extends State<FirstScreen> {
                                               builder: (context) => APIDESC(
                                                     appList: samplePosts,
                                                     currentIndex: 0,
-                                                    name: 'mariam ',
                                                   )),
                                         );
                                       },

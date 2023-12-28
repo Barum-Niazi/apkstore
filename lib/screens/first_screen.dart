@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_game_shop_ui/appinfo.dart';
 import 'package:flutter_game_shop_ui/screens/api.dart';
 import 'package:flutter_game_shop_ui/screens/apidescription.dart';
+import 'package:flutter_game_shop_ui/screens/gameWidget.dart';
 import 'package:flutter_game_shop_ui/screens/second_screen.dart';
 import 'package:flutter_game_shop_ui/tools/border.dart';
 import 'package:flutter_game_shop_ui/tools/colors.dart';
@@ -28,24 +29,6 @@ class _FirstScreenState extends State<FirstScreen> {
 
     futureData = getData();
   }
-
-  // Future<List<AppInfo>> getData() async {
-  //   final response = await http.get(Uri.parse('http://192.168.0.106:3000'));
-  //   var data = jsonDecode(response.body.toString());
-  //   if (response.statusCode == 200) {
-  //     for (Map<String, dynamic> index in data) {
-  //       samplePosts.add(AppInfo.fromJson(index));
-  //     }
-  //     // ignore: avoid_print
-  //     print('apple');
-
-  //     return samplePosts;
-  //   } else {
-  //     // ignore: avoid_print
-  //     print('banana');
-  //     return samplePosts;
-  //   }
-  // }
 
   Future<List<AppInfo>> getData() async {
     final response = await http.get(Uri.parse('http://192.168.0.106:3000'));
@@ -103,58 +86,6 @@ class _FirstScreenState extends State<FirstScreen> {
                                 horizontal: width * 0.03,
                                 vertical: height * 0.01,
                               ),
-                              // child: Row(
-                              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              //   children: [
-                              //     Container(
-                              //       padding: EdgeInsets.all(width * 0.02),
-                              //       decoration: BoxDecoration(
-                              //         color: redColor1,
-                              //         borderRadius:
-                              //             getBorderRadiusWidget(context, 1),
-                              //         border: Border.all(
-                              //             width: 2, color: Colors.black),
-                              //       ),
-                              //       child: Icon(
-                              //         Icons.person,
-                              //         color: Colors.grey.shade200,
-                              //         size: width * 0.07,
-                              //       ),
-                              //     ),
-                              //     Container(
-                              //       padding: EdgeInsets.symmetric(
-                              //         vertical: height * 0.005,
-                              //         horizontal: width * 0.02,
-                              //       ),
-                              //       decoration: BoxDecoration(
-                              //         color: Colors.orange,
-                              //         borderRadius:
-                              //             getBorderRadiusWidget(context, 1),
-                              //       ),
-                              //       child: Row(
-                              //         children: [
-                              //           Container(
-                              //             padding: EdgeInsets.all(width * 0.01),
-                              //             decoration: BoxDecoration(
-                              //               color: Colors.white,
-                              //               borderRadius:
-                              //                   getBorderRadiusWidget(context, 1),
-                              //             ),
-                              //             child: const Icon(
-                              //               Icons.thumb_up_rounded,
-                              //               color: Colors.orange,
-                              //             ),
-                              //           ),
-                              //           SizedBox(width: width * 0.02),
-                              //           const Text(
-                              //             '3,342',
-                              //             style: textStyle10,
-                              //           ),
-                              //         ],
-                              //       ),
-                              //     ),
-                              //   ],
-                              // )
                             ),
                             SizedBox(height: height * 0.01),
                             Center(
@@ -360,7 +291,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                         );
                                       },
                                       child: Hero(
-                                        tag: 'pic',
+                                        tag: 'pic3',
                                         child: GameOverViewWidget(
                                           width: width,
                                           height: height,
@@ -389,7 +320,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                         );
                                       },
                                       child: Hero(
-                                        tag: 'pic',
+                                        tag: 'pic2',
                                         child: GameOverViewWidget(
                                           width: width,
                                           height: height,
@@ -424,33 +355,6 @@ class _FirstScreenState extends State<FirstScreen> {
                                 ],
                               ),
                             ),
-                            // NewGamesWidget(
-                            //   width: width,
-                            //   height: height,
-                            //   name: 'God of war: Ps5 edition',
-                            //   imageName: 'assets/pic5.jpg',
-                            // ),
-                            // SizedBox(height: height * 0.02),
-                            // NewGamesWidget(
-                            //   width: width,
-                            //   height: height,
-                            //   name: 'Battle filed: World War 2',
-                            //   imageName: 'assets/pic6.jpg',
-                            // ),
-                            // NewGamesWidget(
-                            //   width: width,
-                            //   height: height,
-                            //   name: 'ANAS GAME',
-                            //   imageName: 'assets/pic2.jpg',
-                            // ),
-                            // SizedBox(height: height * 0.02),
-                            // NewGamesWidget(
-                            //   width: width,
-                            //   height: height,
-                            //   name: 'Barum bonda',
-                            //   imageName: 'assets/pic3.jpg',
-                            // ),
-
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children:
@@ -476,243 +380,6 @@ class _FirstScreenState extends State<FirstScreen> {
                     );
                   }
                 }),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class NewGamesWidget extends StatelessWidget {
-  const NewGamesWidget({
-    Key? key,
-    required this.width,
-    required this.height,
-    required this.imageName,
-    required this.name,
-    required this.category,
-    required this.rating,
-  }) : super(key: key);
-
-  final double width;
-  final double height;
-  final String imageName;
-  final String name;
-  final String rating;
-  final String category;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: width * 0.9,
-        height: height * 0.16,
-        padding: EdgeInsets.only(
-          left: width * 0.02,
-          top: height * 0.01,
-          bottom: height * 0.01,
-        ),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: getBorderRadiusWidget(context, 0.05),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.shade300,
-              blurRadius: 5,
-              offset: const Offset(2, 2),
-            ),
-          ],
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: ClipRRect(
-                borderRadius: getBorderRadiusWidget(context, 0.05),
-                child: Image.network(
-                  imageName,
-                  width: width * 0.4,
-                  height: height,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topRight,
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 3,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: width * 0.02),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      name,
-                      style: textStyle4,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Text(
-                      category,
-                      style: textStyle5,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          width: width * 0.15,
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: width * 0.015,
-                            vertical: height * 0.006,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.orange.shade100,
-                            borderRadius: getBorderRadiusWidget(context, 1),
-                          ),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.star,
-                                color: Colors.orange,
-                                size: width * 0.05,
-                              ),
-                              Text(
-                                rating,
-                                style: textStyle14,
-                              ),
-                            ],
-                          ),
-                        ),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            shape: getShapeWidget(context, 1),
-                            primary: Colors.white,
-                          ),
-                          onPressed: () {},
-                          child: const Text(
-                            'Install',
-                            style: textStyle13,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class GameOverViewWidget extends StatelessWidget {
-  const GameOverViewWidget({
-    Key? key,
-    required this.width,
-    required this.height,
-    required this.imageName,
-    required this.name,
-    required this.star,
-  }) : super(key: key);
-
-  final double width;
-  final double height;
-
-  final String imageName;
-  final String name;
-  final String star;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: width * 0.02),
-      alignment: Alignment.bottomCenter,
-      width: width * 0.45,
-      height: height * 0.35,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(imageName),
-          fit: BoxFit.cover,
-        ),
-        borderRadius: getBorderRadiusWidget(context, 0.07),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(width * 0.07),
-          bottomRight: Radius.circular(width * 0.07),
-          topRight: Radius.circular(width * 0.01),
-          topLeft: Radius.circular(width * 0.01),
-        ),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaY: 10, sigmaX: 10),
-          child: Container(
-            width: width,
-            height: height * 0.13,
-            padding: EdgeInsets.symmetric(
-              horizontal: width * 0.03,
-              vertical: height * 0.01,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  name,
-                  style: textStyle9,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const Text(
-                  'Action',
-                  style: textStyle10,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: width * 0.02,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white12,
-                        borderRadius: getBorderRadiusWidget(context, 1),
-                      ),
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.star,
-                            color: Colors.orange,
-                          ),
-                          Text(
-                            star,
-                            style: textStyle10,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
-                      ),
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
-                        shape: getShapeWidget(context, 1),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: width * 0.05,
-                          vertical: height * 0.008,
-                        ),
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                        'Install',
-                        style: textStyle13,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
           ),
         ),
       ),

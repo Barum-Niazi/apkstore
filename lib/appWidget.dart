@@ -3,17 +3,15 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_game_shop_ui/appinfo.dart';
-import 'package:flutter_game_shop_ui/screens/api.dart';
 import 'package:flutter_game_shop_ui/screens/apidescription.dart';
-import 'package:flutter_game_shop_ui/screens/second_screen.dart';
 import 'package:flutter_game_shop_ui/tools/border.dart';
 import 'package:flutter_game_shop_ui/tools/colors.dart';
 import 'package:http/http.dart' as http;
 
-import '../tools/styles.dart';
+import 'tools/styles.dart';
 
-class NewGamesWidget extends StatelessWidget {
-  const NewGamesWidget({
+class NewAppWidget extends StatelessWidget {
+  const NewAppWidget({
     Key? key,
     required this.width,
     required this.height,

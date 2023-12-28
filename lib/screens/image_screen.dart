@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_game_shop_ui/screens/second_screen.dart';
+import 'package:flutter_game_shop_ui/screens/apidescription.dart';
 import 'package:flutter_game_shop_ui/tools/border.dart';
 
 class ImageScreen extends StatelessWidget {
@@ -24,8 +24,11 @@ class ImageScreen extends StatelessWidget {
             //   MaterialPageRoute(builder: (context) => const SecondScreen()),
             // );
             Navigator.pop(context);
+
+            ///
+            // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => APIDESC(appList: appList, currentIndex: currentIndex),))
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.white,
           ),
@@ -37,7 +40,7 @@ class ImageScreen extends StatelessWidget {
           tag: hero,
           child: ClipRRect(
             borderRadius: getBorderRadiusWidget(context, 0.05),
-            child: Image.asset(
+            child: Image.network(
               image,
               width: width,
               height: height * 0.6,

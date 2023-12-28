@@ -4,11 +4,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_game_shop_ui/appinfo.dart';
 import 'package:flutter_game_shop_ui/screens/Searchdescription.dart';
-import 'package:flutter_game_shop_ui/screens/api.dart';
 import 'package:flutter_game_shop_ui/screens/apidescription.dart';
-import 'package:flutter_game_shop_ui/screens/gameWidget.dart';
-import 'package:flutter_game_shop_ui/screens/search_app.dart';
-import 'package:flutter_game_shop_ui/screens/second_screen.dart';
+import 'package:flutter_game_shop_ui/appWidget.dart';
 import 'package:flutter_game_shop_ui/tools/border.dart';
 import 'package:flutter_game_shop_ui/tools/colors.dart';
 import 'package:http/http.dart' as http;
@@ -35,7 +32,7 @@ class _FirstScreenState extends State<FirstScreen> {
   }
 
   Future<List<AppInfo>> getData() async {
-    final response = await http.get(Uri.parse('http://172.20.10.2:3000'));
+    final response = await http.get(Uri.parse('http://192.168.0.106'));
     var data = jsonDecode(response.body.toString());
     if (response.statusCode == 200) {
       List<AppInfo> posts = [];
@@ -430,7 +427,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                   List.generate(samplePosts.length, (index) {
                                 return Column(
                                   children: [
-                                    NewGamesWidget(
+                                    NewAppWidget(
                                       width: width,
                                       height: height,
                                       name: samplePosts[index].name,

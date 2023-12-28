@@ -6,6 +6,7 @@ import 'package:flutter_game_shop_ui/appinfo.dart';
 import 'package:flutter_game_shop_ui/screens/api.dart';
 import 'package:flutter_game_shop_ui/screens/apidescription.dart';
 import 'package:flutter_game_shop_ui/screens/gameWidget.dart';
+import 'package:flutter_game_shop_ui/screens/search_app.dart';
 import 'package:flutter_game_shop_ui/screens/second_screen.dart';
 import 'package:flutter_game_shop_ui/tools/border.dart';
 import 'package:flutter_game_shop_ui/tools/colors.dart';
@@ -45,6 +46,24 @@ class _FirstScreenState extends State<FirstScreen> {
       return [];
     }
   }
+  // void _onSearchSubmitted(String query) {
+  //   // Find a matching app based on the entered query
+  //   AppInfo? matchedApp = samplePosts.firstWhere(
+  //     (app) => app.name.toLowerCase().contains(query.toLowerCase()),
+  //     orElse: () => null,
+  //   );
+
+  //   if (matchedApp != null) {
+  //     Navigator.of(context).push(
+  //       MaterialPageRoute(
+  //         builder: (context) => AppDetailsScreen(appInfo: matchedApp),
+  //       ),
+  //     );
+  //   } else {
+  //     // Show a message or handle no match scenario
+  //     print('No matching app found');
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {

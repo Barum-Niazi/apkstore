@@ -20,7 +20,7 @@ class NewAppWidget extends StatelessWidget {
       required this.category,
       required this.rating,
       required this.id,
-        required this.appList})
+      required this.appList})
       : super(key: key);
   final int id;
   final double width;
@@ -38,7 +38,11 @@ class NewAppWidget extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => APIDESC(appList: appList, currentIndex: id, name: name, )),
+              builder: (context) => APIDESC(
+                    appList: appList,
+                    currentIndex: id,
+                    name: name,
+                  )),
         );
       },
       child: Center(
@@ -152,9 +156,19 @@ class NewAppWidget extends StatelessWidget {
                                 ),
                                 primary: Colors.white,
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => APIDESC(
+                                            appList: appList,
+                                            currentIndex: id,
+                                            name: name,
+                                          )),
+                                );
+                              },
                               child: const Text(
-                                  'Install',
+                                'View',
                                 style: textStyle13,
                               ),
                             ),

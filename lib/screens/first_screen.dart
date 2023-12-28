@@ -195,8 +195,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                             // Navigate to APIDESC page with the search query
                                             Navigator.of(context).push(
                                               MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SearchDesc(
+                                                builder: (context) => APIDESC(
                                                   appList: samplePosts,
                                                   name: name,
                                                   currentIndex: 4,
@@ -248,7 +247,6 @@ class _FirstScreenState extends State<FirstScreen> {
                                       star: '4.7',
                                     ),
                                     GestureDetector(
-
                                       child: Hero(
                                         tag: 'pic3',
                                         child: GameOverViewWidget(
@@ -273,7 +271,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                         Navigator.of(context).pushReplacement(
                                           MaterialPageRoute(
                                               builder: (context) => APIDESC(
-                                                name: samplePosts[0].name,
+                                                    name: samplePosts[0].name,
                                                     appList: samplePosts,
                                                     currentIndex: 0,
                                                   )),
@@ -359,7 +357,6 @@ class _FirstScreenState extends State<FirstScreen> {
                                 );
                               },
                             ),
-
                           ],
                         ),
                       ),

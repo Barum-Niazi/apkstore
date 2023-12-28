@@ -293,21 +293,23 @@ class APIDESC extends StatelessWidget {
                             primary: redColor1,
                           ),
                           onPressed: () {
-                            // downloadApp(currentApp.downloadLink);
+                            downloadApp(currentApp.downloadLink);
                           },
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: width * 0.04,
-                              vertical: height * 0.015,
-                            ),
-                            width: double.infinity,
-                            child: Center(
-                              child: Text(
-                                'Download ' + ' ' + currentApp.name,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                          child: GestureDetector(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: width * 0.04,
+                                vertical: height * 0.015,
+                              ),
+                              width: double.infinity,
+                              child: Center(
+                                child: Text(
+                                  'Download ' + ' ' + currentApp.name,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),

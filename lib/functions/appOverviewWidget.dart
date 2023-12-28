@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_game_shop_ui/tools/border.dart';
+import 'package:flutter_apk_store/tools/border.dart';
 
 class AppOverViewWidget extends StatelessWidget {
   const AppOverViewWidget({

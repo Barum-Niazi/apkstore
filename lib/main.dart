@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_game_shop_ui/screens/splashScreen.dart';
+import 'package:flutter_apk_store/screens/splashScreen.dart';
 
 void main() {
   runApp(const MyApp());

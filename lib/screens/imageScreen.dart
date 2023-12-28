@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_game_shop_ui/tools/border.dart';
+import 'package:flutter_apk_store/tools/border.dart';
 
 class ImageScreen extends StatelessWidget {
   const ImageScreen({

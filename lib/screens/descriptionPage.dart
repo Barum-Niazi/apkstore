@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_game_shop_ui/appinfo.dart';
-import 'package:flutter_game_shop_ui/screens/homePage.dart';
-import 'package:flutter_game_shop_ui/screens/imageScreen.dart';
-import 'package:flutter_game_shop_ui/tools/border.dart';
-import 'package:flutter_game_shop_ui/tools/colors.dart';
-import 'package:flutter_game_shop_ui/functions/downloadApp.dart';
+import 'package:flutter_apk_store/appinfo.dart';
+import 'package:flutter_apk_store/screens/homePage.dart';
+import 'package:flutter_apk_store/screens/imageScreen.dart';
+import 'package:flutter_apk_store/tools/border.dart';
+import 'package:flutter_apk_store/tools/colors.dart';
+import 'package:flutter_apk_store/functions/downloadApp.dart';
 
 import '../tools/styles.dart';
 

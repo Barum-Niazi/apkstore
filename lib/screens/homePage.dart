@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_game_shop_ui/appinfo.dart';
-import 'package:flutter_game_shop_ui/functions/customDrawer.dart';
-import 'package:flutter_game_shop_ui/screens/descriptionPage.dart';
-import 'package:flutter_game_shop_ui/functions/newAppWidget.dart';
-import 'package:flutter_game_shop_ui/tools/border.dart';
-import 'package:flutter_game_shop_ui/tools/colors.dart';
+import 'package:flutter_apk_store/appinfo.dart';
+import 'package:flutter_apk_store/functions/customDrawer.dart';
+import 'package:flutter_apk_store/screens/descriptionPage.dart';
+import 'package:flutter_apk_store/functions/newAppWidget.dart';
+import 'package:flutter_apk_store/tools/border.dart';
+import 'package:flutter_apk_store/tools/colors.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_game_shop_ui/functions/appOverviewWidget.dart';
+import 'package:flutter_apk_store/functions/appOverviewWidget.dart';
 
 import '../tools/styles.dart';
 

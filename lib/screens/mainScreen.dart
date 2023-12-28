@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_game_shop_ui/screens/homePage.dart';
-import 'package:flutter_game_shop_ui/tools/colors.dart';
+import 'package:flutter_apk_store/screens/homePage.dart';
+import 'package:flutter_apk_store/tools/colors.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class MainScreen extends StatelessWidget {

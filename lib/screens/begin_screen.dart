@@ -15,7 +15,7 @@ class BeginScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset('assets/pic1.png', height: 20.0),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           const Text(
             'Bringing gaming into\nyour daily routine',
             style: TextStyle(
@@ -31,7 +31,7 @@ class BeginScreen extends StatelessWidget {
       splashTransition: SplashTransition.fadeTransition,
       pageTransitionType: PageTransitionType.fade,
       backgroundColor: redColor1,
-      duration: 1500, // Adjust the duration as needed (in milliseconds)
+      duration: 3000,
     );
   }
 }

@@ -3,9 +3,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_game_shop_ui/appinfo.dart';
+import 'package:flutter_game_shop_ui/functions/customDrawer.dart';
 import 'package:flutter_game_shop_ui/screens/Searchdescription.dart';
 import 'package:flutter_game_shop_ui/screens/apidescription.dart';
-import 'package:flutter_game_shop_ui/appWidget.dart';
+import 'package:flutter_game_shop_ui/functions/appWidget.dart';
 import 'package:flutter_game_shop_ui/tools/border.dart';
 import 'package:flutter_game_shop_ui/tools/colors.dart';
 import 'package:http/http.dart' as http;
@@ -73,6 +74,8 @@ class _FirstScreenState extends State<FirstScreen> {
       color: redColor1,
       child: SafeArea(
         child: Scaffold(
+          backgroundColor: Colors.transparent,
+          drawer: CustomDrawer(),
           body: SingleChildScrollView(
             child: FutureBuilder<List<AppInfo>>(
                 future: futureData,
@@ -108,88 +111,109 @@ class _FirstScreenState extends State<FirstScreen> {
                             ),
                             SizedBox(height: height * 0.01),
                             Center(
-                              child: Container(
-                                width: width * 0.9,
-                                height: height * 0.06,
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: width * 0.03),
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.shade200,
-                                  borderRadius:
-                                      getBorderRadiusWidget(context, 0.03),
-                                ),
-                                // child: Row(
-                                //   mainAxisAlignment:
-                                //       MainAxisAlignment.spaceBetween,
-                                //   children: [
-                                //     Row(
-                                //       children: [
-                                //         Icon(
-                                //           Icons.search,
-                                //           color: Colors.grey,
-                                //           size: width * 0.08,
-                                //         ),
-                                //         SizedBox(width: width * 0.02),
-                                //         Text(
-                                //           samplePosts[0].name,
-                                //           style: textStyle12,
-                                //         ),
-                                //       ],
-                                //     ),
-                                //     Icon(
-                                //       Icons.menu_outlined,
-                                //       color: Colors.grey,
-                                //       size: width * 0.07,
-                                //     ),
-                                //   ],
-                                // ),
-
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.search,
-                                      color: Colors.grey,
-                                      size: width * 0.08,
-                                    ),
-                                    SizedBox(width: width * 0.02),
-                                    Expanded(
-                                      child: TextField(
-                                        controller: searchController,
-                                        decoration: const InputDecoration(
-                                          hintText: 'Search...',
-                                          hintStyle: textStyle12,
-                                          border: InputBorder.none,
-                                        ),
-                                        style: textStyle12,
-                                        onChanged: (value) {
-                                          // Update the 'name' variable as the user types
-                                          setState(() {
-                                            name = value;
-                                          });
-                                        },
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      Scaffold.of(context).openDrawer();
+                                    },
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: height * 0.012,
+                                          horizontal: width * 0.03),
+                                      decoration: BoxDecoration(
+                                        color: Colors.grey.shade200,
+                                        borderRadius: getBorderRadiusWidget(
+                                            context, 0.03),
                                       ),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        // Navigate to APIDESC page with the search query
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) => SearchDesc(
-                                              appList: samplePosts,
-                                              name: name,
-                                              currentIndex: 0,
-                                            ),
-                                          ),
-                                        );
-                                      },
                                       child: Icon(
-                                        Icons.search,
+                                        Icons.menu,
                                         color: Colors.grey,
                                         size: width * 0.07,
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                  Container(
+                                    width: width * 0.8,
+                                    height: height * 0.06,
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: width * 0.03),
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey.shade200,
+                                      borderRadius:
+                                          getBorderRadiusWidget(context, 0.03),
+                                    ),
+                                    // child: Row(
+                                    //   mainAxisAlignment:
+                                    //       MainAxisAlignment.spaceBetween,
+                                    //   children: [
+                                    //     Row(
+                                    //       children: [
+                                    //         Icon(
+                                    //           Icons.search,
+                                    //           color: Colors.grey,
+                                    //           size: width * 0.08,
+                                    //         ),
+                                    //         SizedBox(width: width * 0.02),
+                                    //         Text(
+                                    //           samplePosts[0].name,
+                                    //           style: textStyle12,
+                                    //         ),
+                                    //       ],
+                                    //     ),
+                                    //     Icon(
+                                    //       Icons.menu_outlined,
+                                    //       color: Colors.grey,
+                                    //       size: width * 0.07,
+                                    //     ),
+                                    //   ],
+                                    // ),
+
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: TextField(
+                                            controller: searchController,
+                                            decoration: const InputDecoration(
+                                              hintText: 'Search...',
+                                              hintStyle: textStyle12,
+                                              border: InputBorder.none,
+                                            ),
+                                            style: textStyle12,
+                                            onChanged: (value) {
+                                              // Update the 'name' variable as the user types
+                                              setState(() {
+                                                name = value;
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {
+                                            // Navigate to APIDESC page with the search query
+                                            Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SearchDesc(
+                                                  appList: samplePosts,
+                                                  name: name,
+                                                  currentIndex: 4,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Icon(
+                                            Icons.search,
+                                            color: Colors.grey,
+                                            size: width * 0.07,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             SizedBox(height: height * 0.01),
@@ -323,12 +347,8 @@ class _FirstScreenState extends State<FirstScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'Trending',
+                                    'Popular Games',
                                     style: textStyle2,
-                                  ),
-                                  Text(
-                                    'See all',
-                                    style: textStyle11,
                                   ),
                                 ],
                               ),
@@ -352,7 +372,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                           MaterialPageRoute(
                                               builder: (context) => APIDESC(
                                                     appList: samplePosts,
-                                                    currentIndex: 0,
+                                                    currentIndex: 4,
                                                   )),
                                         );
                                       },
@@ -413,10 +433,6 @@ class _FirstScreenState extends State<FirstScreen> {
                                   Text(
                                     'New Apps',
                                     style: textStyle2,
-                                  ),
-                                  Text(
-                                    'See all',
-                                    style: textStyle11,
                                   ),
                                 ],
                               ),

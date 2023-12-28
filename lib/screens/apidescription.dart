@@ -309,7 +309,7 @@ class APIDESC extends StatelessWidget {
                       width: double.infinity,
                       child: const Center(
                         child: Text(
-                          'Install Game',
+                          'Download ' + ,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 18,

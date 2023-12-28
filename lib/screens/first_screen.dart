@@ -32,7 +32,7 @@ class _FirstScreenState extends State<FirstScreen> {
   }
 
   Future<List<AppInfo>> getData() async {
-    final response = await http.get(Uri.parse('http://192.168.0.106'));
+    final response = await http.get(Uri.parse('http://192.168.0.106:3000'));
     var data = jsonDecode(response.body.toString());
     if (response.statusCode == 200) {
       List<AppInfo> posts = [];

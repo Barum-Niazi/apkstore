@@ -31,6 +31,9 @@ class CustomDrawer extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height *0.1,
+          ),
           ListTile(
             title: const Text('Social'),
             leading: const Icon(Icons.social_distance),

@@ -65,7 +65,7 @@ class SearchDesc extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Navigator.of(context).pushReplacement(
+                            Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) => const FirstScreen(),
                               ),
@@ -227,7 +227,7 @@ class SearchDesc extends StatelessWidget {
                         borderRadius: getBorderRadiusWidget(context, 0.05),
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.of(context).pushReplacement(
+                            Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) => ImageScreen(
                                   image: currentApp.image2Url,
@@ -251,7 +251,7 @@ class SearchDesc extends StatelessWidget {
                         borderRadius: getBorderRadiusWidget(context, 0.05),
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.of(context).pushReplacement(
+                            Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) => ImageScreen(
                                   image: currentApp.image3Url,
@@ -275,7 +275,7 @@ class SearchDesc extends StatelessWidget {
                         borderRadius: getBorderRadiusWidget(context, 0.05),
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.of(context).pushReplacement(
+                            Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) => ImageScreen(
                                   image: currentApp.image4Url,

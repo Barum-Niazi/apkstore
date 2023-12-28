@@ -7,19 +7,24 @@ import 'package:flutter_game_shop_ui/tools/colors.dart';
 import 'package:flutter_game_shop_ui/functions/downloadApp.dart';
 
 import '../tools/styles.dart';
+import 'Searchdescription.dart';
 
 class APIDESC extends StatelessWidget {
   APIDESC({
     Key? key,
     required this.appList,
     required this.currentIndex,
+    required this.name,
   }) : super(key: key);
 
   final List<AppInfo> appList;
-  final int currentIndex;
+  int currentIndex;
+  final String name;
 
   @override
   Widget build(BuildContext context) {
+    currentIndex = findIndex(appList, name);
+
     AppInfo currentApp = appList[currentIndex];
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
@@ -50,7 +55,7 @@ class APIDESC extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).pushReplacement(
+                          Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => const FirstScreen(),
                             ),
@@ -178,8 +183,7 @@ class APIDESC extends StatelessWidget {
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(
-                            horizontal: width * 0.03,
-                            vertical: height * 0.02,
+                            vertical: height * 0.01,
                           ),
                           child: Text(
                             currentApp.description,
@@ -208,7 +212,7 @@ class APIDESC extends StatelessWidget {
                                   getBorderRadiusWidget(context, 0.05),
                               child: GestureDetector(
                                 onTap: () {
-                                  Navigator.of(context).pushReplacement(
+                                  Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) => ImageScreen(
                                         image: currentApp.image2Url,
@@ -233,7 +237,7 @@ class APIDESC extends StatelessWidget {
                                   getBorderRadiusWidget(context, 0.05),
                               child: GestureDetector(
                                 onTap: () {
-                                  Navigator.of(context).pushReplacement(
+                                  Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) => ImageScreen(
                                         image: currentApp.image3Url,
@@ -258,7 +262,7 @@ class APIDESC extends StatelessWidget {
                                   getBorderRadiusWidget(context, 0.05),
                               child: GestureDetector(
                                 onTap: () {
-                                  Navigator.of(context).pushReplacement(
+                                  Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) => ImageScreen(
                                         image: currentApp.image4Url,

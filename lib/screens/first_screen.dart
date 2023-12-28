@@ -124,7 +124,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                           vertical: height * 0.012,
                                           horizontal: width * 0.03),
                                       decoration: BoxDecoration(
-                                        color: Colors.grey.shade200,
+                                        color: Colors.grey.shade300,
                                         borderRadius: getBorderRadiusWidget(
                                             context, 0.03),
                                       ),
@@ -141,7 +141,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                     padding: EdgeInsets.symmetric(
                                         horizontal: width * 0.03),
                                     decoration: BoxDecoration(
-                                      color: Colors.grey.shade200,
+                                      color: Colors.grey.shade300,
                                       borderRadius:
                                           getBorderRadiusWidget(context, 0.03),
                                     ),
@@ -216,126 +216,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                 ],
                               ),
                             ),
-                            SizedBox(height: height * 0.01),
-                            Padding(
-                              padding: EdgeInsets.all(width * 0.03),
-                              child: const Text(
-                                'Categories',
-                                style: textStyle2,
-                              ),
-                            ),
-                            SizedBox(height: height * 0.01),
-                            SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.symmetric(
-                                        horizontal: width * 0.02),
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: height * 0.006,
-                                      horizontal: width * 0.02,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: redColor2,
-                                      borderRadius:
-                                          getBorderRadiusWidget(context, 1),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        const Icon(
-                                          Icons.directions_walk_rounded,
-                                          color: redColor1,
-                                        ),
-                                        SizedBox(width: width * 0.02),
-                                        const Text(
-                                          'Action',
-                                          style: textStyle13,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.symmetric(
-                                        horizontal: width * 0.02),
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: height * 0.006,
-                                      horizontal: width * 0.02,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.grey.shade300,
-                                      borderRadius:
-                                          getBorderRadiusWidget(context, 1),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        const Icon(
-                                          Icons.car_crash_rounded,
-                                          color: Colors.black,
-                                        ),
-                                        SizedBox(width: width * 0.02),
-                                        const Text(
-                                          'Racing',
-                                          style: textStyle6,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.symmetric(
-                                        horizontal: width * 0.02),
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: height * 0.006,
-                                      horizontal: width * 0.02,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.grey.shade300,
-                                      borderRadius:
-                                          getBorderRadiusWidget(context, 1),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        const Icon(
-                                          Icons.castle,
-                                          color: Colors.black,
-                                        ),
-                                        SizedBox(width: width * 0.02),
-                                        const Text(
-                                          'Strategy',
-                                          style: textStyle6,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.symmetric(
-                                        horizontal: width * 0.02),
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: height * 0.006,
-                                      horizontal: width * 0.02,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.grey.shade300,
-                                      borderRadius:
-                                          getBorderRadiusWidget(context, 1),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        const Icon(
-                                          Icons.child_care,
-                                          color: Colors.black,
-                                        ),
-                                        SizedBox(width: width * 0.02),
-                                        const Text(
-                                          'Kids',
-                                          style: textStyle6,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+
                             SizedBox(height: height * 0.01),
                             Padding(
                               padding: EdgeInsets.symmetric(
@@ -367,15 +248,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                       star: '4.7',
                                     ),
                                     GestureDetector(
-                                      onTap: () {
-                                        Navigator.of(context).pushReplacement(
-                                          MaterialPageRoute(
-                                              builder: (context) => APIDESC(
-                                                    appList: samplePosts,
-                                                    currentIndex: 4,
-                                                  )),
-                                        );
-                                      },
+
                                       child: Hero(
                                         tag: 'pic3',
                                         child: GameOverViewWidget(
@@ -400,6 +273,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                         Navigator.of(context).pushReplacement(
                                           MaterialPageRoute(
                                               builder: (context) => APIDESC(
+                                                name: samplePosts[0].name,
                                                     appList: samplePosts,
                                                     currentIndex: 0,
                                                   )),
@@ -437,25 +311,55 @@ class _FirstScreenState extends State<FirstScreen> {
                                 ],
                               ),
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children:
-                                  List.generate(samplePosts.length, (index) {
+                            // Column(
+                            //   crossAxisAlignment: CrossAxisAlignment.start,
+                            //   children:
+                            //       List.generate(samplePosts.length, (index) {
+                            //     return Column(
+                            //       children: [
+                            //         NewAppWidget(
+                            //           width: width,
+                            //           height: height,
+                            //             appList: [
+                            //               samplePosts[index],
+                            //             ],
+                            //           name: samplePosts[index].name,
+                            //           imageName: samplePosts[index].image1Url,
+                            //           category: samplePosts[index].category,
+                            //           rating: samplePosts[index].rating,
+                            //           id: index,
+                            //
+                            //         ),
+                            //         SizedBox(height: height * 0.02),
+                            //       ],
+                            //     );
+                            //   }),
+                            // )
+                            ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: samplePosts.length,
+                              itemBuilder: (context, index) {
                                 return Column(
                                   children: [
                                     NewAppWidget(
                                       width: width,
                                       height: height,
+                                      appList: [
+                                        samplePosts[index],
+                                      ],
                                       name: samplePosts[index].name,
                                       imageName: samplePosts[index].image1Url,
                                       category: samplePosts[index].category,
                                       rating: samplePosts[index].rating,
+                                      id: index,
                                     ),
                                     SizedBox(height: height * 0.02),
                                   ],
                                 );
-                              }),
-                            )
+                              },
+                            ),
+
                           ],
                         ),
                       ),

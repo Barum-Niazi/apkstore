@@ -1,12 +1,9 @@
-import 'dart:convert';
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_game_shop_ui/appinfo.dart';
-import 'package:flutter_game_shop_ui/screens/apidescription.dart';
+import 'package:flutter_game_shop_ui/screens/descriptionPage.dart';
 import 'package:flutter_game_shop_ui/tools/border.dart';
 import 'package:flutter_game_shop_ui/tools/colors.dart';
-import 'package:http/http.dart' as http;
 
 import '../tools/styles.dart';
 
@@ -38,7 +35,7 @@ class NewAppWidget extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => APIDESC(
+              builder: (context) => descriptionScreen(
                     appList: appList,
                     currentIndex: id,
                     name: name,
@@ -160,7 +157,7 @@ class NewAppWidget extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => APIDESC(
+                                      builder: (context) => descriptionScreen(
                                             appList: appList,
                                             currentIndex: id,
                                             name: name,
@@ -182,41 +179,6 @@ class NewAppWidget extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class GameOverViewWidget extends StatelessWidget {
-  const GameOverViewWidget({
-    Key? key,
-    required this.width,
-    required this.height,
-    required this.imageName,
-    required this.name,
-    required this.star,
-  }) : super(key: key);
-
-  final double width;
-  final double height;
-
-  final String imageName;
-  final String name;
-  final String star;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: width * 0.02),
-      alignment: Alignment.bottomCenter,
-      width: width * 0.45,
-      height: height * 0.35,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(imageName),
-          fit: BoxFit.cover,
-        ),
-        borderRadius: getBorderRadiusWidget(context, 0.07),
       ),
     );
   }

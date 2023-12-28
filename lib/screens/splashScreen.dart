@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_game_shop_ui/screens/first_screen.dart';
-import 'package:flutter_game_shop_ui/screens/main_screen.dart';
+import 'package:flutter_game_shop_ui/screens/homePage.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import '../tools/colors.dart';
 
-class BeginScreen extends StatelessWidget {
-  const BeginScreen({Key? key}) : super(key: key);
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,7 @@ class BeginScreen extends StatelessWidget {
           Image.asset('assets/pic1.png', height: 20.0),
           const SizedBox(height: 20.0),
           const Text(
-            'Bringing gaming into\nyour daily routine',
+            'Bringing applications into\nyour daily routine',
             style: TextStyle(
               color: Colors.white,
               fontSize: 20.0,
@@ -27,7 +26,7 @@ class BeginScreen extends StatelessWidget {
         ],
       ),
       splashIconSize: 100,
-      nextScreen: FirstScreen(),
+      nextScreen: HomePage(),
       splashTransition: SplashTransition.fadeTransition,
       pageTransitionType: PageTransitionType.fade,
       backgroundColor: redColor1,

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_game_shop_ui/screens/begin_screen.dart';
-import 'package:flutter_game_shop_ui/screens/first_screen.dart';
-import 'package:flutter_game_shop_ui/screens/main_screen.dart';
+import 'package:flutter_game_shop_ui/screens/splashScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BeginScreen(),
+      home: SplashScreen(),
     );
   }
 }

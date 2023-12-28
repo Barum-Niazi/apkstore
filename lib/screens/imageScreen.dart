@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_game_shop_ui/screens/apidescription.dart';
 import 'package:flutter_game_shop_ui/tools/border.dart';
 
 class ImageScreen extends StatelessWidget {
@@ -20,13 +19,7 @@ class ImageScreen extends StatelessWidget {
         backgroundColor: Colors.black,
         leading: IconButton(
           onPressed: () {
-            // Navigator.of(context).pushReplacement(
-            //   MaterialPageRoute(builder: (context) => const SecondScreen()),
-            // );
             Navigator.pop(context);
-
-            ///
-            // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => APIDESC(appList: appList, currentIndex: currentIndex),))
           },
           icon: const Icon(
             Icons.arrow_back,

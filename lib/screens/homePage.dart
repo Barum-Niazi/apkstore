@@ -1,27 +1,25 @@
 import 'dart:convert';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_game_shop_ui/appinfo.dart';
 import 'package:flutter_game_shop_ui/functions/customDrawer.dart';
-import 'package:flutter_game_shop_ui/screens/Searchdescription.dart';
-import 'package:flutter_game_shop_ui/screens/apidescription.dart';
-import 'package:flutter_game_shop_ui/functions/appWidget.dart';
+import 'package:flutter_game_shop_ui/screens/descriptionPage.dart';
+import 'package:flutter_game_shop_ui/functions/newAppWidget.dart';
 import 'package:flutter_game_shop_ui/tools/border.dart';
 import 'package:flutter_game_shop_ui/tools/colors.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_game_shop_ui/functions/appOverviewWidget.dart';
 
 import '../tools/styles.dart';
 
-class FirstScreen extends StatefulWidget {
-  const FirstScreen({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<FirstScreen> createState() => _FirstScreenState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _FirstScreenState extends State<FirstScreen> {
-  //List<AppInfo> samplePosts = [];
+class _HomePageState extends State<HomePage> {
   String name = '';
   late TextEditingController searchController;
   late Future<List<AppInfo>> futureData;
@@ -40,31 +38,11 @@ class _FirstScreenState extends State<FirstScreen> {
       for (Map<String, dynamic> index in data) {
         posts.add(AppInfo.fromJson(index));
       }
-      print('apple');
       return posts;
     } else {
-      print('banana');
       return [];
     }
   }
-  // void _onSearchSubmitted(String query) {
-  //   // Find a matching app based on the entered query
-  //   AppInfo? matchedApp = samplePosts.firstWhere(
-  //     (app) => app.name.toLowerCase().contains(query.toLowerCase()),
-  //     orElse: () => null,
-  //   );
-
-  //   if (matchedApp != null) {
-  //     Navigator.of(context).push(
-  //       MaterialPageRoute(
-  //         builder: (context) => AppDetailsScreen(appInfo: matchedApp),
-  //       ),
-  //     );
-  //   } else {
-  //     // Show a message or handle no match scenario
-  //     print('No matching app found');
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -145,32 +123,6 @@ class _FirstScreenState extends State<FirstScreen> {
                                       borderRadius:
                                           getBorderRadiusWidget(context, 0.03),
                                     ),
-                                    // child: Row(
-                                    //   mainAxisAlignment:
-                                    //       MainAxisAlignment.spaceBetween,
-                                    //   children: [
-                                    //     Row(
-                                    //       children: [
-                                    //         Icon(
-                                    //           Icons.search,
-                                    //           color: Colors.grey,
-                                    //           size: width * 0.08,
-                                    //         ),
-                                    //         SizedBox(width: width * 0.02),
-                                    //         Text(
-                                    //           samplePosts[0].name,
-                                    //           style: textStyle12,
-                                    //         ),
-                                    //       ],
-                                    //     ),
-                                    //     Icon(
-                                    //       Icons.menu_outlined,
-                                    //       color: Colors.grey,
-                                    //       size: width * 0.07,
-                                    //     ),
-                                    //   ],
-                                    // ),
-
                                     child: Row(
                                       children: [
                                         Expanded(
@@ -183,7 +135,6 @@ class _FirstScreenState extends State<FirstScreen> {
                                             ),
                                             style: textStyle12,
                                             onChanged: (value) {
-                                              // Update the 'name' variable as the user types
                                               setState(() {
                                                 name = value;
                                               });
@@ -192,10 +143,10 @@ class _FirstScreenState extends State<FirstScreen> {
                                         ),
                                         GestureDetector(
                                           onTap: () {
-                                            // Navigate to APIDESC page with the search query
                                             Navigator.of(context).push(
                                               MaterialPageRoute(
-                                                builder: (context) => APIDESC(
+                                                builder: (context) =>
+                                                    descriptionScreen(
                                                   appList: samplePosts,
                                                   name: name,
                                                   currentIndex: 4,
@@ -215,7 +166,6 @@ class _FirstScreenState extends State<FirstScreen> {
                                 ],
                               ),
                             ),
-
                             SizedBox(height: height * 0.01),
                             Padding(
                               padding: EdgeInsets.symmetric(
@@ -227,7 +177,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'Popular Games',
+                                    'Upcoming Titles',
                                     style: textStyle2,
                                   ),
                                 ],
@@ -239,54 +189,32 @@ class _FirstScreenState extends State<FirstScreen> {
                                 scrollDirection: Axis.horizontal,
                                 child: Row(
                                   children: [
-                                    GameOverViewWidget(
+                                    AppOverViewWidget(
                                       width: width,
                                       height: height,
-                                      imageName: 'assets/pic2.jpg',
-                                      name: 'Call of Duty: Going War Mobile',
-                                      star: '4.7',
+                                      imageName: 'assets/pic6.jpg',
                                     ),
                                     GestureDetector(
                                       child: Hero(
                                         tag: 'pic3',
-                                        child: GameOverViewWidget(
+                                        child: AppOverViewWidget(
                                           width: width,
                                           height: height,
                                           imageName: 'assets/pic3.jpg',
-                                          name:
-                                              'Spider man: Spider man Remaster',
-                                          star: '4.8',
                                         ),
                                       ),
                                     ),
-                                    GameOverViewWidget(
+                                    AppOverViewWidget(
                                       width: width,
                                       height: height,
-                                      imageName: 'assets/pic6.jpg',
-                                      name: 'Battle Filed: World War 2',
-                                      star: '4.2',
+                                      imageName: 'assets/pic2.jpg',
                                     ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        Navigator.of(context).pushReplacement(
-                                          MaterialPageRoute(
-                                              builder: (context) => APIDESC(
-                                                    name: samplePosts[0].name,
-                                                    appList: samplePosts,
-                                                    currentIndex: 0,
-                                                  )),
-                                        );
-                                      },
-                                      child: Hero(
-                                        tag: 'pic2',
-                                        child: GameOverViewWidget(
-                                          width: width,
-                                          height: height,
-                                          imageName: 'assets/pic3.jpg',
-                                          name:
-                                              'Spider man: Spider man Remaster',
-                                          star: '4.8',
-                                        ),
+                                    Hero(
+                                      tag: 'pic2',
+                                      child: AppOverViewWidget(
+                                        width: width,
+                                        height: height,
+                                        imageName: 'assets/pic5.jpg',
                                       ),
                                     ),
                                   ],
@@ -309,30 +237,6 @@ class _FirstScreenState extends State<FirstScreen> {
                                 ],
                               ),
                             ),
-                            // Column(
-                            //   crossAxisAlignment: CrossAxisAlignment.start,
-                            //   children:
-                            //       List.generate(samplePosts.length, (index) {
-                            //     return Column(
-                            //       children: [
-                            //         NewAppWidget(
-                            //           width: width,
-                            //           height: height,
-                            //             appList: [
-                            //               samplePosts[index],
-                            //             ],
-                            //           name: samplePosts[index].name,
-                            //           imageName: samplePosts[index].image1Url,
-                            //           category: samplePosts[index].category,
-                            //           rating: samplePosts[index].rating,
-                            //           id: index,
-                            //
-                            //         ),
-                            //         SizedBox(height: height * 0.02),
-                            //       ],
-                            //     );
-                            //   }),
-                            // )
                             ListView.builder(
                               physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
@@ -357,6 +261,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                 );
                               },
                             ),
+                            SizedBox(height: height * 0.02)
                           ],
                         ),
                       ),

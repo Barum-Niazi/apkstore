@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_game_shop_ui/screens/first_screen.dart';
+import 'package:flutter_game_shop_ui/screens/homePage.dart';
 import 'package:flutter_game_shop_ui/tools/colors.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
@@ -13,10 +13,10 @@ class MainScreen extends StatelessWidget {
     _controller = PersistentTabController(initialIndex: 0);
     List<Widget> _buildScreens() {
       return [
-        const FirstScreen(),
-        const FirstScreen(),
-        const FirstScreen(),
-        const FirstScreen(),
+        const HomePage(),
+        const HomePage(),
+        const HomePage(),
+        const HomePage(),
       ];
     }
 

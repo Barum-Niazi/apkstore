@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_game_shop_ui/appinfo.dart';
-import 'package:flutter_game_shop_ui/screens/first_screen.dart';
-import 'package:flutter_game_shop_ui/screens/image_screen.dart';
+import 'package:flutter_game_shop_ui/screens/homePage.dart';
+import 'package:flutter_game_shop_ui/screens/imageScreen.dart';
 import 'package:flutter_game_shop_ui/tools/border.dart';
 import 'package:flutter_game_shop_ui/tools/colors.dart';
 import 'package:flutter_game_shop_ui/functions/downloadApp.dart';
 
 import '../tools/styles.dart';
-import 'Searchdescription.dart';
 
-class APIDESC extends StatelessWidget {
-  APIDESC({
+class descriptionScreen extends StatelessWidget {
+  descriptionScreen({
     Key? key,
     required this.appList,
     required this.currentIndex,
@@ -20,6 +19,15 @@ class APIDESC extends StatelessWidget {
   final List<AppInfo> appList;
   int currentIndex;
   final String name;
+
+  int findIndex(List<AppInfo> appList, String name) {
+    for (int i = 0; i < appList.length; i++) {
+      if (appList[i].name.toLowerCase() == name.toLowerCase()) {
+        return i;
+      }
+    }
+    return 1;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +65,7 @@ class APIDESC extends StatelessWidget {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => const FirstScreen(),
+                              builder: (context) => const HomePage(),
                             ),
                           );
                         },
@@ -80,12 +88,12 @@ class APIDESC extends StatelessWidget {
                   width: width,
                   margin: EdgeInsets.only(top: height * 0.42),
                   decoration: BoxDecoration(
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Colors.black,
                           blurRadius: 5,
                           spreadRadius: 2,
-                          offset: const Offset(2, 2),
+                          offset: Offset(2, 2),
                         ),
                       ],
                       color: Colors.white,
@@ -124,7 +132,7 @@ class APIDESC extends StatelessWidget {
                                       ),
                                       Text(
                                         currentApp.category,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,

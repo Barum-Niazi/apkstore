@@ -89,7 +89,7 @@ class NewAppWidget extends StatelessWidget {
                       Text(
                         name,
                         style: TextStyle(
-                          color: redColor1,
+                          color: themeRed1,
                           fontSize: width * 0.04,
                           fontWeight: FontWeight.w800,
                         ),

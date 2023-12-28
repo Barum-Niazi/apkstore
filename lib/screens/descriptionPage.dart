@@ -126,7 +126,7 @@ class descriptionScreen extends StatelessWidget {
                                   Row(
                                     children: [
                                       const Icon(Icons.app_registration_rounded,
-                                          color: redColor1),
+                                          color: themeRed1),
                                       SizedBox(
                                         width: width * 0.015,
                                       ),
@@ -144,7 +144,7 @@ class descriptionScreen extends StatelessWidget {
                                     children: [
                                       const Icon(
                                         Icons.star_rate_rounded,
-                                        color: redColor1,
+                                        color: themeRed1,
                                       ),
                                       SizedBox(
                                         width: width * 0.015,
@@ -163,7 +163,7 @@ class descriptionScreen extends StatelessWidget {
                                     children: [
                                       const Icon(
                                         Icons.phone_android_sharp,
-                                        color: redColor1,
+                                        color: themeRed1,
                                       ),
                                       SizedBox(
                                         width: width * 0.015,
@@ -298,7 +298,7 @@ class descriptionScreen extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(width * 0.05),
                             ),
-                            primary: redColor1,
+                            primary: themeRed1,
                           ),
                           onPressed: () {
                             downloadApp(currentApp.downloadLink);

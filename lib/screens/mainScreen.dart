@@ -25,51 +25,51 @@ class MainScreen extends StatelessWidget {
         PersistentBottomNavBarItem(
             icon: const Icon(
               Icons.home,
-              color: redColor1,
+              color: themeRed1,
             ),
             inactiveIcon: Icon(
               Icons.home_outlined,
               color: Colors.grey.shade800,
             ),
             title: ("Home"),
-            activeColorPrimary: redColor2,
-            activeColorSecondary: redColor1),
+            activeColorPrimary: themeRed2,
+            activeColorSecondary: themeRed1),
         PersistentBottomNavBarItem(
             icon: const Icon(
               Icons.location_on,
-              color: redColor1,
+              color: themeRed1,
             ),
             inactiveIcon: Icon(
               Icons.location_on_outlined,
               color: Colors.grey.shade800,
             ),
             title: ("Location"),
-            activeColorPrimary: redColor2,
-            activeColorSecondary: redColor1),
+            activeColorPrimary: themeRed2,
+            activeColorSecondary: themeRed1),
         PersistentBottomNavBarItem(
             icon: const Icon(
               Icons.notifications,
-              color: redColor1,
+              color: themeRed1,
             ),
             inactiveIcon: Icon(
               Icons.notifications_none_outlined,
               color: Colors.grey.shade800,
             ),
             title: ("Notification"),
-            activeColorPrimary: redColor2,
-            activeColorSecondary: redColor1),
+            activeColorPrimary: themeRed2,
+            activeColorSecondary: themeRed1),
         PersistentBottomNavBarItem(
             icon: const Icon(
               Icons.settings,
-              color: redColor1,
+              color: themeRed1,
             ),
             inactiveIcon: Icon(
               Icons.settings_outlined,
               color: Colors.grey.shade800,
             ),
             title: ("Settings"),
-            activeColorPrimary: redColor2,
-            activeColorSecondary: redColor1),
+            activeColorPrimary: themeRed2,
+            activeColorSecondary: themeRed1),
       ];
     }
 

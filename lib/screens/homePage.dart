@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Container(
-      color: redColor1,
+      color: themeRed1,
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.transparent,

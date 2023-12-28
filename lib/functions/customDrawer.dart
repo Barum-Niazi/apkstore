@@ -22,7 +22,7 @@ class CustomDrawer extends StatelessWidget {
                     'APK STORE',
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
-                      color: redColor1,
+                      color: themeRed1,
                       fontSize: 18.0,
                       fontFamily: 'Montserrat',
                     ),

@@ -288,6 +288,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                             builder: (context) => APIDESC(
                                                   appList: samplePosts,
                                                   currentIndex: 0,
+                                                  name: 'i hate mariam',
                                                 )),
                                       );
                                     },
@@ -316,6 +317,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                             builder: (context) => APIDESC(
                                                   appList: samplePosts,
                                                   currentIndex: 0,
+                                                  name: 'i love her too',
                                                 )),
                                       );
                                     },

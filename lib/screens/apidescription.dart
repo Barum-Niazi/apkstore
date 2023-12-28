@@ -8,11 +8,16 @@ import 'package:flutter_game_shop_ui/tools/colors.dart';
 import '../tools/styles.dart';
 
 class APIDESC extends StatelessWidget {
-  APIDESC({Key? key, required this.appList, required this.currentIndex})
+  APIDESC(
+      {Key? key,
+      required this.appList,
+      required this.currentIndex,
+      required this.name})
       : super(key: key);
 
   final List<AppInfo> appList;
   final int currentIndex;
+  final String name;
 
   @override
   Widget build(BuildContext context) {

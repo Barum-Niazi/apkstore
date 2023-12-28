@@ -23,16 +23,18 @@ class FirstScreen extends StatefulWidget {
 
 class _FirstScreenState extends State<FirstScreen> {
   //List<AppInfo> samplePosts = [];
+  String name = '';
+  late TextEditingController searchController;
   late Future<List<AppInfo>> futureData;
   @override
   void initState() {
     super.initState();
-
+    searchController = TextEditingController();
     futureData = getData();
   }
 
   Future<List<AppInfo>> getData() async {
-    final response = await http.get(Uri.parse('http://192.168.0.106:3000'));
+    final response = await http.get(Uri.parse('http://10.135.0.98:3000'));
     var data = jsonDecode(response.body.toString());
     if (response.statusCode == 200) {
       List<AppInfo> posts = [];
@@ -118,28 +120,75 @@ class _FirstScreenState extends State<FirstScreen> {
                                   borderRadius:
                                       getBorderRadiusWidget(context, 0.03),
                                 ),
+                                // child: Row(
+                                //   mainAxisAlignment:
+                                //       MainAxisAlignment.spaceBetween,
+                                //   children: [
+                                //     Row(
+                                //       children: [
+                                //         Icon(
+                                //           Icons.search,
+                                //           color: Colors.grey,
+                                //           size: width * 0.08,
+                                //         ),
+                                //         SizedBox(width: width * 0.02),
+                                //         Text(
+                                //           samplePosts[0].name,
+                                //           style: textStyle12,
+                                //         ),
+                                //       ],
+                                //     ),
+                                //     Icon(
+                                //       Icons.menu_outlined,
+                                //       color: Colors.grey,
+                                //       size: width * 0.07,
+                                //     ),
+                                //   ],
+                                // ),
+
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.search,
-                                          color: Colors.grey,
-                                          size: width * 0.08,
-                                        ),
-                                        SizedBox(width: width * 0.02),
-                                        Text(
-                                          samplePosts[0].name,
-                                          style: textStyle12,
-                                        ),
-                                      ],
-                                    ),
                                     Icon(
-                                      Icons.menu_outlined,
+                                      Icons.search,
                                       color: Colors.grey,
-                                      size: width * 0.07,
+                                      size: width * 0.08,
+                                    ),
+                                    SizedBox(width: width * 0.02),
+                                    Expanded(
+                                      child: TextField(
+                                        controller: searchController,
+                                        decoration: const InputDecoration(
+                                          hintText: 'Search...',
+                                          hintStyle: textStyle12,
+                                          border: InputBorder.none,
+                                        ),
+                                        style: textStyle12,
+                                        onChanged: (value) {
+                                          // Update the 'name' variable as the user types
+                                          setState(() {
+                                            name = value;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        // Navigate to APIDESC page with the search query
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) => APIDESC(
+                                              appList: samplePosts,
+                                              currentIndex: 0,
+                                              name: name,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      child: Icon(
+                                        Icons.search,
+                                        color: Colors.grey,
+                                        size: width * 0.07,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -306,6 +355,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                               builder: (context) => APIDESC(
                                                     appList: samplePosts,
                                                     currentIndex: 0,
+                                                    name: 'mariam ',
                                                   )),
                                         );
                                       },
@@ -335,6 +385,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                               builder: (context) => APIDESC(
                                                     appList: samplePosts,
                                                     currentIndex: 0,
+                                                    name: 'mariam ',
                                                   )),
                                         );
                                       },

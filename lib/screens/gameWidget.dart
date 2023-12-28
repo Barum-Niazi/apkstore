@@ -37,7 +37,7 @@ class NewGamesWidget extends StatelessWidget {
         width: width * 0.9,
         height: height * 0.16,
         padding: EdgeInsets.only(
-          left: width * 0.02,
+          left: 0.01 * width,
           top: height * 0.01,
           bottom: height * 0.01,
         ),
@@ -62,7 +62,7 @@ class NewGamesWidget extends StatelessWidget {
                   imageName,
                   width: width * 0.4,
                   height: height,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                   alignment: Alignment.topRight,
                 ),
               ),

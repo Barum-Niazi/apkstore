@@ -20,9 +20,10 @@ class ImageScreen extends StatelessWidget {
         backgroundColor: Colors.black,
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const SecondScreen()),
-            );
+            // Navigator.of(context).pushReplacement(
+            //   MaterialPageRoute(builder: (context) => const SecondScreen()),
+            // );
+            Navigator.pop(context);
           },
           icon: Icon(
             Icons.arrow_back,

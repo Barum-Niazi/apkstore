@@ -61,7 +61,7 @@ const textStyle11 = TextStyle(
   color: Colors.grey,
   fontWeight: FontWeight.bold,
 );
-const textStyle12 = TextStyle(
+const darkTextStyle3 = TextStyle(
   fontSize: 14,
   color: Colors.grey,
   fontWeight: FontWeight.bold,

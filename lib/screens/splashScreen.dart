@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_apk_store/screens/darkHome.dart';
 import 'package:flutter_apk_store/screens/homePage.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:page_transition/page_transition.dart';
@@ -26,7 +27,7 @@ class SplashScreen extends StatelessWidget {
         ],
       ),
       splashIconSize: 100,
-      nextScreen: HomePage(),
+      nextScreen: HomePage2(),
       splashTransition: SplashTransition.fadeTransition,
       pageTransitionType: PageTransitionType.fade,
       backgroundColor: themeRed1,

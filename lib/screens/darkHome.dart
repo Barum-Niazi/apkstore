@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_apk_store/appinfo.dart';
+import 'package:flutter_apk_store/functions/blacknewApp.dart';
 import 'package:flutter_apk_store/functions/customDrawer.dart';
+import 'package:flutter_apk_store/screens/descdark.dart';
 import 'package:flutter_apk_store/screens/descriptionPage.dart';
 import 'package:flutter_apk_store/functions/newAppWidget.dart';
 import 'package:flutter_apk_store/tools/border.dart';
@@ -12,14 +14,14 @@ import 'package:flutter_apk_store/functions/appOverviewWidget.dart';
 
 import '../tools/styles.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage2 extends StatefulWidget {
+  const HomePage2({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePage2> createState() => _HomePage2State();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePage2State extends State<HomePage2> {
   String name = '';
   late TextEditingController searchController;
   late Future<List<AppInfo>> futureData;
@@ -52,7 +54,7 @@ class _HomePageState extends State<HomePage> {
       color: themeRed1,
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.black54,
           drawer: CustomDrawer(),
           body: SingleChildScrollView(
             child: FutureBuilder<List<AppInfo>>(
@@ -70,8 +72,8 @@ class _HomePageState extends State<HomePage> {
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            backGroundColor1,
-                            backGroundColor2,
+                            Colors.black,
+                            Colors.deepPurple,
                           ],
                           begin: Alignment.topRight,
                           end: Alignment.bottomLeft,
@@ -102,13 +104,13 @@ class _HomePageState extends State<HomePage> {
                                           vertical: height * 0.012,
                                           horizontal: width * 0.03),
                                       decoration: BoxDecoration(
-                                        color: Colors.grey.shade300,
+                                        color: Colors.black87,
                                         borderRadius: getBorderRadiusWidget(
                                             context, 0.03),
                                       ),
                                       child: Icon(
                                         Icons.menu,
-                                        color: Colors.grey,
+                                        color: Colors.white54,
                                         size: width * 0.07,
                                       ),
                                     ),
@@ -119,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                                     padding: EdgeInsets.symmetric(
                                         horizontal: width * 0.03),
                                     decoration: BoxDecoration(
-                                      color: Colors.grey.shade300,
+                                      color: Colors.black,
                                       borderRadius:
                                           getBorderRadiusWidget(context, 0.03),
                                     ),
@@ -146,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                                             Navigator.of(context).push(
                                               MaterialPageRoute(
                                                 builder: (context) =>
-                                                    descriptionScreen(
+                                                    descriptionScreen2(
                                                   appList: samplePosts,
                                                   name: name,
                                                   currentIndex: 4,
@@ -178,7 +180,7 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Text(
                                     'Upcoming Titles',
-                                    style: textStyle2,
+                                    style: darkTextStyle3,
                                   ),
                                 ],
                               ),
@@ -232,7 +234,7 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Text(
                                     'New Apps',
-                                    style: textStyle2,
+                                    style: darkTextStyle3,
                                   ),
                                 ],
                               ),
@@ -244,7 +246,7 @@ class _HomePageState extends State<HomePage> {
                               itemBuilder: (context, index) {
                                 return Column(
                                   children: [
-                                    NewAppWidget(
+                                    NewAppWidget2(
                                       width: width,
                                       height: height,
                                       appList: [

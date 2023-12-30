@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_apk_store/tools/colors.dart';
+import 'package:provider/provider.dart';
 
-class CustomDrawer extends StatelessWidget {
+import '../providers/darkThemeProvider.dart';
+
+class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
 
   @override
+  State<CustomDrawer> createState() => _CustomDrawerState();
+}
+
+class _CustomDrawerState extends State<CustomDrawer> {
+  bool isSwitched = false;
+
+  @override
   Widget build(BuildContext context) {
+    var darkThemeProvider = Provider.of<DarkThemeProvider>(context);
     return Drawer(
       child: ListView(
         children: [
@@ -31,9 +42,8 @@ class CustomDrawer extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.1,
-          ),
+
+          //make theme switcher here
           ListTile(
             title: const Text('Social'),
             leading: const Icon(Icons.social_distance),
@@ -69,6 +79,36 @@ class CustomDrawer extends StatelessWidget {
               Navigator.pop(context);
             },
           ),
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.1,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Switch(
+                  thumbIcon: MaterialStateProperty.all(
+                    Icon(
+                      isSwitched ? Icons.brightness_2 : Icons.brightness_7,
+                      color: Colors.white,
+                    ),
+                  ),
+                  // This bool value toggles the switch.
+                  value: isSwitched,
+                  activeColor: Colors.red,
+                  onChanged: (bool value) {
+                    // This is called when the user toggles the switch.
+                    setState(() {
+                      isSwitched = value;
+                      darkThemeProvider.darkTheme = value;
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
+
         ],
       ),
     );

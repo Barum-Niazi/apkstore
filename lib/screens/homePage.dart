@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_apk_store/appinfo.dart';
 import 'package:flutter_apk_store/functions/customDrawer.dart';
@@ -31,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<List<AppInfo>> getData() async {
-    final response = await http.get(Uri.parse('http://192.168.8.104:3000'));
+    final response = await http.get(Uri.parse('http://192.168.18.72:3000'));
     var data = jsonDecode(response.body.toString());
     if (response.statusCode == 200) {
       List<AppInfo> posts = [];

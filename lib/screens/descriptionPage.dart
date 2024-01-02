@@ -5,16 +5,42 @@ import 'package:flutter_apk_store/screens/imageScreen.dart';
 import 'package:flutter_apk_store/tools/border.dart';
 import 'package:flutter_apk_store/tools/colors.dart';
 import 'package:flutter_apk_store/functions/downloadApp.dart';
+import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
+import 'dart:io';
 
 import '../tools/styles.dart';
 
-class descriptionScreen extends StatelessWidget {
+class descriptionScreen extends StatefulWidget {
   descriptionScreen({
     Key? key,
     required this.appList,
     required this.currentIndex,
     required this.name,
   }) : super(key: key);
+
+  final List<AppInfo> appList;
+  int currentIndex;
+  final String name;
+
+  State<StatefulWidget> createState() => _descriptionScreenState(
+        appList: appList,
+        currentIndex: currentIndex,
+        name: name,
+      );
+}
+
+class _descriptionScreenState extends State<descriptionScreen> {
+  _descriptionScreenState({
+    required this.appList,
+    required this.currentIndex,
+    required this.name,
+  });
+
+  int _total = 0, _received = 0;
+  late http.StreamedResponse _response;
+  File? _image;
+  final List<int> _bytes = [];
 
   final List<AppInfo> appList;
   int currentIndex;
@@ -27,6 +53,26 @@ class descriptionScreen extends StatelessWidget {
       }
     }
     return 1;
+  }
+
+  Future<void> downloadProgress(AppInfo currentApp) async {
+    _response = await http.Client()
+        .send(http.Request('GET', Uri.parse(currentApp.downloadLink)));
+    _total = _response.contentLength ?? 0;
+
+    _response.stream.listen((value) {
+      setState(() {
+        _bytes.addAll(value);
+        _received += value.length;
+      });
+    }).onDone(() async {
+      final file =
+          File('${(await getApplicationDocumentsDirectory()).path}/image.png');
+      await file.writeAsBytes(_bytes);
+      setState(() {
+        _image = file;
+      });
+    });
   }
 
   @override
@@ -301,7 +347,7 @@ class descriptionScreen extends StatelessWidget {
                             primary: themeRed1,
                           ),
                           onPressed: () {
-                            downloadApp(currentApp.downloadLink);
+                            downloadProgress(currentApp);
                           },
                           child: GestureDetector(
                             child: Container(
@@ -312,7 +358,7 @@ class descriptionScreen extends StatelessWidget {
                               width: double.infinity,
                               child: Center(
                                 child: Text(
-                                  'Download ' + ' ' + currentApp.name,
+                                  'Download ${currentApp.name}',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
@@ -321,6 +367,36 @@ class descriptionScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
+                          ),
+                        ),
+                        SizedBox(height: height * 0.02),
+                        Container(
+                          child: LinearProgressIndicator(
+                            value: _total != 0
+                                ? (_received / _total).clamp(0.0, 1.0)
+                                : 0.0,
+                            backgroundColor: Colors.grey.shade200,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              themeRed1,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          _total != 0
+                              ? '${((_received / _total) * 100).toStringAsFixed(2)}%'
+                              : '0%',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          '${(_received ~/ 1024)} KB / ${(_total ~/ 1024)} KB',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ],

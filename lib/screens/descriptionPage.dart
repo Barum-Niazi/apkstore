@@ -8,6 +8,7 @@ import 'package:flutter_apk_store/functions/downloadApp.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
+import 'dart:convert';
 
 import '../tools/styles.dart';
 
@@ -39,7 +40,7 @@ class _descriptionScreenState extends State<descriptionScreen> {
 
   int _total = 0, _received = 0;
   late http.StreamedResponse _response;
-  File? _image;
+  File? application;
   final List<int> _bytes = [];
 
   final List<AppInfo> appList;
@@ -60,17 +61,22 @@ class _descriptionScreenState extends State<descriptionScreen> {
         .send(http.Request('GET', Uri.parse(currentApp.downloadLink)));
     _total = _response.contentLength ?? 0;
 
+    String responseBody = utf8.decode(_bytes);
+    print(responseBody);
+
     _response.stream.listen((value) {
       setState(() {
         _bytes.addAll(value);
         _received += value.length;
       });
     }).onDone(() async {
-      final file =
-          File('${(await getApplicationDocumentsDirectory()).path}/image.png');
+      final directory = await getApplicationDocumentsDirectory();
+      final filePath = '${directory.path}/${currentApp.name}.apk';
+
+      final file = File(filePath);
       await file.writeAsBytes(_bytes);
       setState(() {
-        _image = file;
+        application = file;
       });
     });
   }
@@ -393,7 +399,7 @@ class _descriptionScreenState extends State<descriptionScreen> {
                         ),
                         SizedBox(height: 10),
                         Text(
-                          '${(_received ~/ 1024)} KB / ${(_total ~/ 1024)} KB',
+                          '${(_received ~/ 1024 ~/ 1024)} MB / ${(_total ~/ 1024 ~/ 1024)} MB',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,

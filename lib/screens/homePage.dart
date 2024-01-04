@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<List<AppInfo>> getData() async {
-    final response = await http.get(Uri.parse('http://192.168.227.1:3000'));
+    final response = await http.get(Uri.parse('http://192.168.0.112:3000'));
     var data = jsonDecode(response.body.toString());
     if (response.statusCode == 200) {
       List<AppInfo> posts = [];

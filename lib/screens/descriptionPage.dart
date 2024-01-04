@@ -4,11 +4,10 @@ import 'package:flutter_apk_store/screens/homePage.dart';
 import 'package:flutter_apk_store/screens/imageScreen.dart';
 import 'package:flutter_apk_store/tools/border.dart';
 import 'package:flutter_apk_store/tools/colors.dart';
-import 'package:flutter_apk_store/functions/downloadApp.dart';
 import 'package:http/http.dart' as http;
-import 'package:path_provider/path_provider.dart';
 import 'dart:io';
-import 'dart:convert';
+import 'package:dio/dio.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../tools/styles.dart';
@@ -40,9 +39,7 @@ class _descriptionScreenState extends State<descriptionScreen> {
   });
 
   int _total = 0, _received = 0;
-  late http.StreamedResponse _response;
   File? application;
-  final List<int> _bytes = [];
 
   final List<AppInfo> appList;
   int currentIndex;
@@ -57,33 +54,55 @@ class _descriptionScreenState extends State<descriptionScreen> {
     return 1;
   }
 
-  Future<void> downloadProgress(AppInfo currentApp) async {
-    _response = await http.Client()
-        .send(http.Request('GET', Uri.parse(currentApp.downloadLink)));
-    _total = _response.contentLength ?? 0;
+  Future<void> downloadAndSaveFile(String fileUrl, String name) async {
+    try {
+      final dio = Dio();
+      final response = await dio.get(
+        fileUrl,
+        onReceiveProgress: (received, total) {
+          setState(() {
+            _total = total;
+            _received = received;
+          });
+        },
+        options: Options(responseType: ResponseType.bytes),
+      );
 
-    _response.stream.listen(
-      (List<int> value) {
-        setState(() {
-          _bytes.addAll(value);
-          _received += value.length;
-        });
-      },
-      onDone: () async {
-        final directory = (await getApplicationDocumentsDirectory()).path;
-        final filePath = '$directory.path/${currentApp.name}.apk';
+      // Check if the request was successful (status code 200).
+      if (response.statusCode == 200) {
+        // Get the external storage directory.
+        final directory = await getExternalStorageDirectory();
 
-        final file = File(filePath);
-        await file.writeAsBytes(_bytes);
-        setState(() {
-          application = file;
-        });
-      },
-      onError: (error) {
-        print('Error during download: $error');
-      },
-      cancelOnError: true,
-    );
+        if (directory != null) {
+          // Create a file with a unique name in the external storage directory.
+          final file = File('${directory.path}/Download/$name.apk');
+
+          // Ensure that the "Download" directory exists.
+          final downloadDirectory = Directory('${directory.path}/Download');
+          downloadDirectory.createSync(recursive: true);
+
+          // Write the downloaded data to the file.
+          await file.writeAsBytes(response.data);
+
+          // File has been successfully downloaded and stored in the external storage directory (Downloads folder).
+          print('File downloaded and saved to: ${file.path}');
+        } else {
+          // Handle the case where the external storage directory is not available.
+          print('External storage directory is not available.');
+        }
+      } else {
+        // Handle error cases here (e.g., file not found, server error, etc.).
+        print('Error downloading file: ${response.statusCode}');
+      }
+    } catch (e) {
+      // Handle any exceptions that may occur during the process.
+      print('Error: $e');
+    }
+  }
+
+  void downloadFile(String fileURL, String name) {
+    // Replace with your file URL.
+    downloadAndSaveFile(fileURL, name);
   }
 
   @override
@@ -358,7 +377,8 @@ class _descriptionScreenState extends State<descriptionScreen> {
                             primary: themeRed1,
                           ),
                           onPressed: () {
-                            downloadProgress(currentApp);
+                            downloadFile(
+                                currentApp.downloadLink, currentApp.name);
                           },
                           child: GestureDetector(
                             child: Container(
@@ -403,13 +423,6 @@ class _descriptionScreenState extends State<descriptionScreen> {
                           ),
                         ),
                         SizedBox(height: 10),
-                        Text(
-                          '${(_received ~/ 1024 ~/ 1024)} MB / ${(_total ~/ 1024 ~/ 1024)} MB',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
                       ],
                     ),
                   ),

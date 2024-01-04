@@ -62,24 +62,28 @@ class _descriptionScreenState extends State<descriptionScreen> {
         .send(http.Request('GET', Uri.parse(currentApp.downloadLink)));
     _total = _response.contentLength ?? 0;
 
-    String responseBody = utf8.decode(_bytes);
-    print(responseBody);
+    _response.stream.listen(
+      (List<int> value) {
+        setState(() {
+          _bytes.addAll(value);
+          _received += value.length;
+        });
+      },
+      onDone: () async {
+        final directory = (await getApplicationDocumentsDirectory()).path;
+        final filePath = '$directory.path/${currentApp.name}.apk';
 
-    _response.stream.listen((value) {
-      setState(() {
-        _bytes.addAll(value);
-        _received += value.length;
-      });
-    }).onDone(() async {
-      final directory = await getApplicationDocumentsDirectory();
-      final filePath = '${directory.path}/${currentApp.name}.apk';
-
-      final file = File(filePath);
-      await file.writeAsBytes(_bytes);
-      setState(() {
-        application = file;
-      });
-    });
+        final file = File(filePath);
+        await file.writeAsBytes(_bytes);
+        setState(() {
+          application = file;
+        });
+      },
+      onError: (error) {
+        print('Error during download: $error');
+      },
+      cancelOnError: true,
+    );
   }
 
   @override

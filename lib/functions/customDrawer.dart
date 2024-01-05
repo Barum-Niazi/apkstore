@@ -51,7 +51,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             onTap: () {
               Navigator.push(context, MaterialPageRoute(
                 builder: (context) {
-                  return const CategoryPage(category2: 'social');
+                  return const CategoryPage(category2: 'Social');
                 },
               ));
             },
@@ -62,18 +62,18 @@ class _CustomDrawerState extends State<CustomDrawer> {
             onTap: () {
               Navigator.push(context, MaterialPageRoute(
                 builder: (context) {
-                  return const CategoryPage(category2: 'game');
+                  return const CategoryPage(category2: 'Game');
                 },
               ));
             },
           ),
           ListTile(
-            title: const Text('Enterainment'),
+            title: const Text('Entertainment'),
             leading: const Icon(Icons.play_circle_fill),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(
                 builder: (context) {
-                  return const CategoryPage(category2: 'entertainment');
+                  return const CategoryPage(category2: 'Entertainment');
                 },
               ));
             },
@@ -84,7 +84,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             onTap: () {
               Navigator.push(context, MaterialPageRoute(
                 builder: (context) {
-                  return const CategoryPage(category2: 'editor');
+                  return const CategoryPage(category2: 'Editor');
                 },
               ));
             },

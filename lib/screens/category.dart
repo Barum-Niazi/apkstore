@@ -12,14 +12,14 @@ import 'package:flutter_apk_store/functions/appOverviewWidget.dart';
 
 import '../tools/styles.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.category2}) : super(key: key);
+class CategoryPage extends StatefulWidget {
+  const CategoryPage({Key? key, required this.category2}) : super(key: key);
   final String category2;
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<CategoryPage> createState() => _CategoryPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _CategoryPageState extends State<CategoryPage> {
   String name = '';
   late TextEditingController searchController;
   late Future<List<AppInfo>> futureData;

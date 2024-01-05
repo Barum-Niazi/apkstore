@@ -5,6 +5,7 @@ import 'package:flutter_apk_store/appinfo.dart';
 import 'package:flutter_apk_store/functions/customDrawer.dart';
 import 'package:flutter_apk_store/screens/descriptionPage.dart';
 import 'package:flutter_apk_store/functions/newAppWidget.dart';
+import 'package:flutter_apk_store/screens/homeDark.dart';
 import 'package:flutter_apk_store/tools/border.dart';
 import 'package:flutter_apk_store/tools/colors.dart';
 import 'package:http/http.dart' as http;
@@ -95,7 +96,12 @@ class _CategoryPageState extends State<CategoryPage> {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      Scaffold.of(context).openDrawer();
+                                      Navigator.pushReplacement(context,
+                                          MaterialPageRoute(
+                                        builder: (context) {
+                                          return HomePage();
+                                        },
+                                      ));
                                     },
                                     child: Container(
                                       padding: EdgeInsets.symmetric(
@@ -107,7 +113,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                             context, 0.03),
                                       ),
                                       child: Icon(
-                                        Icons.menu,
+                                        Icons.home,
                                         color: Colors.grey,
                                         size: width * 0.07,
                                       ),
@@ -182,6 +188,7 @@ class _CategoryPageState extends State<CategoryPage> {
                             //     ],
                             //   ),
                             // ),
+
                             ListView.builder(
                               physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,

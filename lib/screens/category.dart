@@ -171,23 +171,6 @@ class _CategoryPageState extends State<CategoryPage> {
                                 ],
                               ),
                             ),
-                            // Padding(
-                            //   padding: EdgeInsets.symmetric(
-                            //     horizontal: width * 0.03,
-                            //     vertical: height * 0.02,
-                            //   ),
-                            //   child: const Row(
-                            //     mainAxisAlignment:
-                            //         MainAxisAlignment.spaceBetween,
-                            //     children: [
-                            //       Text(
-                            //         'New Apps',
-                            //         style: textStyle2,
-                            //       ),
-                            //     ],
-                            //   ),
-                            // ),
-
                             ListView.builder(
                               physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
@@ -215,8 +198,6 @@ class _CategoryPageState extends State<CategoryPage> {
                                       SizedBox(height: height * 0.02),
                                     ],
                                   );
-                                } else {
-                                  return SizedBox(height: height * 0.02);
                                 }
                               },
                             ),

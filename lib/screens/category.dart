@@ -96,8 +96,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.pushReplacement(context,
-                                          MaterialPageRoute(
+                                      Navigator.push(context, MaterialPageRoute(
                                         builder: (context) {
                                           return HomePage();
                                         },

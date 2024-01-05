@@ -166,46 +166,52 @@ class _HomePageState extends State<HomePage> {
                                 ],
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: width * 0.03,
-                                vertical: height * 0.02,
-                              ),
-                              child: const Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'New Apps',
-                                    style: textStyle2,
-                                  ),
-                                ],
-                              ),
-                            ),
+                            // Padding(
+                            //   padding: EdgeInsets.symmetric(
+                            //     horizontal: width * 0.03,
+                            //     vertical: height * 0.02,
+                            //   ),
+                            //   child: const Row(
+                            //     mainAxisAlignment:
+                            //         MainAxisAlignment.spaceBetween,
+                            //     children: [
+                            //       Text(
+                            //         'New Apps',
+                            //         style: textStyle2,
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
                             ListView.builder(
                               physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: samplePosts.length,
                               itemBuilder: (context, index) {
-                                return Column(
-                                  children: [
-                                    if (samplePosts[index].category ==
-                                        category2)
-                                      NewAppWidget(
-                                        width: width,
-                                        height: height,
-                                        appList: [
-                                          samplePosts[index],
-                                        ],
-                                        name: samplePosts[index].name,
-                                        imageName: samplePosts[index].image1Url,
-                                        category: samplePosts[index].category,
-                                        rating: samplePosts[index].rating,
-                                        id: index,
-                                      ),
-                                    SizedBox(height: height * 0.02),
-                                  ],
-                                );
+                                if (samplePosts[index].category ==
+                                    widget.category2) {
+                                  return Column(
+                                    children: [
+                                      if (samplePosts[index].category ==
+                                          widget.category2)
+                                        NewAppWidget(
+                                          width: width,
+                                          height: height,
+                                          appList: [
+                                            samplePosts[index],
+                                          ],
+                                          name: samplePosts[index].name,
+                                          imageName:
+                                              samplePosts[index].image1Url,
+                                          category: samplePosts[index].category,
+                                          rating: samplePosts[index].rating,
+                                          id: index,
+                                        ),
+                                      SizedBox(height: height * 0.02),
+                                    ],
+                                  );
+                                } else {
+                                  return SizedBox(height: height * 0.02);
+                                }
                               },
                             ),
                             SizedBox(height: height * 0.02)

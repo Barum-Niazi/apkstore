@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_apk_store/screens/category.dart';
 import 'package:flutter_apk_store/tools/colors.dart';
-import 'package:provider/provider.dart';
+//import 'package:provider/provider.dart';
 
 import '../providers/darkThemeProvider.dart';
 
@@ -16,7 +17,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    var darkThemeProvider = Provider.of<DarkThemeProvider>(context);
+    //var darkThemeProvider = Provider.of<DarkThemeProvider>(context);
     return Drawer(
       child: ListView(
         children: [
@@ -48,28 +49,44 @@ class _CustomDrawerState extends State<CustomDrawer> {
             title: const Text('Social'),
             leading: const Icon(Icons.social_distance),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return const CategoryPage(category2: 'social');
+                },
+              ));
             },
           ),
           ListTile(
             title: const Text('Games'),
             leading: const Icon(Icons.gamepad),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return const CategoryPage(category2: 'game');
+                },
+              ));
             },
           ),
           ListTile(
             title: const Text('Enterainment'),
             leading: const Icon(Icons.play_circle_fill),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return const CategoryPage(category2: 'entertainment');
+                },
+              ));
             },
           ),
           ListTile(
             title: const Text('Editor'),
             leading: const Icon(Icons.movie_creation),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return const CategoryPage(category2: 'editor');
+                },
+              ));
             },
           ),
           ListTile(
@@ -101,14 +118,13 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     // This is called when the user toggles the switch.
                     setState(() {
                       isSwitched = value;
-                      darkThemeProvider.darkTheme = value;
+                      //  darkThemeProvider.darkTheme = value;
                     });
                   },
                 ),
               ],
             ),
           ),
-
         ],
       ),
     );

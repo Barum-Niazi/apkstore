@@ -4,10 +4,10 @@ import 'package:flutter_apk_store/screens/homePage.dart';
 import 'package:flutter_apk_store/screens/imageScreen.dart';
 import 'package:flutter_apk_store/tools/border.dart';
 import 'package:flutter_apk_store/tools/colors.dart';
-import 'package:http/http.dart' as http;
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:open_file/open_file.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../tools/styles.dart';
@@ -40,10 +40,18 @@ class _descriptionScreenState extends State<descriptionScreen> {
 
   int _total = 0, _received = 0;
   File? application;
-
   final List<AppInfo> appList;
   int currentIndex;
   final String name;
+  String filePath = 'NULL';
+  Future<bool> fileStatus = Future<bool>.value(false);
+  String progressText = 'Download';
+
+  @override
+  void initState() {
+    fileStatus = fileExists(appList[0].name);
+    super.initState();
+  }
 
   int findIndex(List<AppInfo> appList, String name) {
     for (int i = 0; i < appList.length; i++) {
@@ -52,6 +60,16 @@ class _descriptionScreenState extends State<descriptionScreen> {
       }
     }
     return 1;
+  }
+
+  Future<bool> fileExists(String fileName) async {
+    final directory = await getExternalStorageDirectory();
+    if (directory != null) {
+      filePath = '${directory.path}/Download/$fileName.apk';
+      final file = File(filePath);
+      return file.exists();
+    }
+    return false;
   }
 
   Future<void> downloadAndSaveFile(String fileUrl, String name) async {
@@ -63,6 +81,9 @@ class _descriptionScreenState extends State<descriptionScreen> {
           setState(() {
             _total = total;
             _received = received;
+            if (_received >= _total) {
+              progressText = 'Open';
+            }
           });
         },
         options: Options(responseType: ResponseType.bytes),
@@ -100,9 +121,15 @@ class _descriptionScreenState extends State<descriptionScreen> {
     }
   }
 
-  void downloadFile(String fileURL, String name) {
-    // Replace with your file URL.
-    downloadAndSaveFile(fileURL, name);
+  void downloadFile(String fileURL, String name) async {
+    if (await fileExists(name)) {
+      if (await Permission.requestInstallPackages.request().isGranted) {
+        final result = await OpenFile.open(filePath);
+        print('Open file result: ${result.message}');
+      }
+    } else {
+      downloadAndSaveFile(fileURL, name);
+    }
   }
 
   @override
@@ -388,39 +415,95 @@ class _descriptionScreenState extends State<descriptionScreen> {
                               ),
                               width: double.infinity,
                               child: Center(
-                                child: Text(
-                                  'Download ${currentApp.name}',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
+                                  child: FutureBuilder<bool>(
+                                future: fileStatus,
+                                builder: (context, snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.done) {
+                                    // Check if the future is complete and has data
+                                    if (snapshot.hasData) {
+                                      return Text(
+                                        snapshot.data!
+                                            ? 'Open'
+                                            : '$progressText',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      );
+                                    } else {
+                                      // Handle the case where snapshot doesn't have data
+                                      return Text(
+                                        'Error',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      );
+                                    }
+                                  } else {
+                                    // Display a loading indicator while the future is in progress
+                                    return CircularProgressIndicator();
+                                  }
+                                },
+                              )),
                             ),
                           ),
                         ),
                         SizedBox(height: height * 0.02),
-                        Container(
-                          child: LinearProgressIndicator(
-                            value: _total != 0
-                                ? (_received / _total).clamp(0.0, 1.0)
-                                : 0.0,
-                            backgroundColor: Colors.grey.shade200,
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              themeRed1,
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          _total != 0
-                              ? '${((_received / _total) * 100).toStringAsFixed(2)}%'
-                              : '0%',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        FutureBuilder<bool>(
+                          future: fileStatus,
+                          builder: (BuildContext context,
+                              AsyncSnapshot<bool> snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              // Check if the future is complete and the file is already downloaded
+                              if (snapshot.data == true) {
+                                return Text(
+                                  'File already downloaded',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                );
+                              } else {
+                                // Show the download progress
+                                return Column(
+                                  children: <Widget>[
+                                    Container(
+                                      child: LinearProgressIndicator(
+                                        value: _total != 0
+                                            ? (_received / _total)
+                                                .clamp(0.0, 1.0)
+                                            : 0.0,
+                                        backgroundColor: Colors.grey.shade200,
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                                themeRed1),
+                                      ),
+                                    ),
+                                    SizedBox(height: 10),
+                                    Text(
+                                      _total != 0
+                                          ? '${((_received / _total) * 100).toStringAsFixed(2)}%'
+                                          : '0%',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }
+                            } else {
+                              // Display a loading indicator while waiting for the future
+                              return CircularProgressIndicator();
+                            }
+                          },
                         ),
                         SizedBox(height: 10),
                       ],

@@ -26,8 +26,9 @@ class _MyAppState extends State<MyApp> {
 
   void getCurrentAppTheme() async {
     themeChangeProvider.darkTheme =
-    await themeChangeProvider.darkThemePreference.getTheme();
+        await themeChangeProvider.darkThemePreference.getTheme();
   }
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(

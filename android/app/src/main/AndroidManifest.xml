@@ -2,8 +2,9 @@
     package="com.example.flutter_game_shop_ui">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-   <application
-        android:label="flutter_game_shop_ui"
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <application
+        android:label="AppStash"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

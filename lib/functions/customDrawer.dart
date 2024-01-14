@@ -30,7 +30,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
                 child: Center(
                   child: Text(
-                    'APK STORE',
+                    'AppStash',
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       color: themeRed1,
@@ -108,7 +108,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ],
             ),
           ),
-
         ],
       ),
     );

@@ -188,6 +188,7 @@ class _descriptionScreenState extends State<descriptionScreen> {
                     children: [
                       GestureDetector(
                         onTap: () {
+                          cancelDownload();
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => const HomePage(),

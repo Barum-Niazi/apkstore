@@ -6,6 +6,7 @@ import 'package:flutter_apk_store/tools/border.dart';
 import 'package:flutter_apk_store/tools/colors.dart';
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:open_file/open_file.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -47,8 +48,64 @@ class _descriptionScreenState extends State<descriptionScreen> {
   Future<bool> fileStatus = Future<bool>.value(false);
   String progressText = 'Download';
 
+  InterstitialAd? _interstitialAd;
+
+  // TODO: replace this test ad unit with your own ad unit.
+  final adUnitId = Platform.isAndroid
+      ? 'ca-app-pub-3940256099942544/1033173712'
+      : 'ca-app-pub-3940256099942544/4411468910';
+
+  /// Loads an interstitial ad.
+  void loadAd() {
+    InterstitialAd.load(
+      adUnitId: adUnitId,
+      request: const AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        // Called when an ad is successfully received.
+        onAdLoaded: (ad) {
+          ad.fullScreenContentCallback = FullScreenContentCallback(
+            // Called when the ad showed the full screen content.
+            onAdShowedFullScreenContent: (ad) {
+              debugPrint('InterstitialAd showed full screen content.');
+            },
+            // Called when an impression occurs on the ad.
+            onAdImpression: (ad) {
+              debugPrint('InterstitialAd impression recorded.');
+            },
+            // Called when the ad failed to show full screen content.
+            onAdFailedToShowFullScreenContent: (ad, err) {
+              debugPrint(
+                  'InterstitialAd failed to show full screen content: $err');
+              // Dispose the ad here to free resources.
+              ad.dispose();
+            },
+            // Called when the ad dismissed full screen content.
+            onAdDismissedFullScreenContent: (ad) {
+              debugPrint('InterstitialAd dismissed full screen content.');
+              // Dispose the ad here to free resources.
+              ad.dispose();
+            },
+            // Called when a click is recorded for an ad.
+            onAdClicked: (ad) {
+              debugPrint('InterstitialAd clicked.');
+            },
+          );
+
+          debugPrint('$ad loaded.');
+          // Keep a reference to the ad so you can show it later.
+          _interstitialAd = ad;
+        },
+        // Called when an ad request failed.
+        onAdFailedToLoad: (LoadAdError error) {
+          debugPrint('InterstitialAd failed to load: $error');
+        },
+      ),
+    );
+  }
+
   @override
   void initState() {
+    loadAd();
     fileStatus = fileExists(appList[0].name);
     super.initState();
   }
@@ -404,6 +461,7 @@ class _descriptionScreenState extends State<descriptionScreen> {
                             primary: themeRed1,
                           ),
                           onPressed: () {
+                            _interstitialAd!.show();
                             downloadFile(
                                 currentApp.downloadLink, currentApp.name);
                           },

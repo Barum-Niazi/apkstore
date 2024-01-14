@@ -168,33 +168,35 @@ class _CategoryPageState extends State<CategoryPage> {
                                 ],
                               ),
                             ),
+                            SizedBox(height: height * 0.02),
                             ListView.builder(
                               physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: samplePosts.length,
                               itemBuilder: (context, index) {
-                                // if (samplePosts[index].category ==
-                                //     widget.category2) {
-                                return Column(
-                                  children: [
-                                    if (samplePosts[index].category ==
-                                        widget.category2)
+                                if (samplePosts[index].category ==
+                                    widget.category2) {
+                                  return Column(
+                                    children: [
                                       NewAppWidget(
                                         width: width,
                                         height: height,
-                                        appList: [
-                                          samplePosts[index],
-                                        ],
+                                        appList: [samplePosts[index]],
                                         name: samplePosts[index].name,
                                         imageName: samplePosts[index].image1Url,
                                         category: samplePosts[index].category,
                                         rating: samplePosts[index].rating,
                                         id: index,
                                       ),
-                                    //  SizedBox(height: height * 0.02),
-                                  ],
-                                );
-                                //}
+                                      SizedBox(
+                                          height: height *
+                                              0.02), // Add SizedBox only when categories match
+                                    ],
+                                  );
+                                } else {
+                                  return const SizedBox
+                                      .shrink(); // If categories don't match, return an empty SizedBox
+                                }
                               },
                             ),
                             SizedBox(height: height * 0.02)

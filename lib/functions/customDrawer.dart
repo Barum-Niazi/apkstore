@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_apk_store/screens/category.dart';
 import 'package:flutter_apk_store/tools/colors.dart';
-//import 'package:provider/provider.dart';
-
-import '../providers/darkThemeProvider.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});

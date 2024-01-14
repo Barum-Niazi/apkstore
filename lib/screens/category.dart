@@ -97,11 +97,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.push(context, MaterialPageRoute(
-                                        builder: (context) {
-                                          return const HomePage();
-                                        },
-                                      ));
+                                      Navigator.pop(context);
                                     },
                                     child: Container(
                                       padding: EdgeInsets.symmetric(
@@ -113,7 +109,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                             context, 0.03),
                                       ),
                                       child: Icon(
-                                        Icons.home,
+                                        Icons.arrow_back,
                                         color: Colors.grey,
                                         size: width * 0.07,
                                       ),

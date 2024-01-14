@@ -25,51 +25,51 @@ class MainScreen extends StatelessWidget {
         PersistentBottomNavBarItem(
             icon: const Icon(
               Icons.home,
-              color: themeRed1,
+              color: theme1,
             ),
             inactiveIcon: Icon(
               Icons.home_outlined,
               color: Colors.grey.shade800,
             ),
             title: ("Home"),
-            activeColorPrimary: themeRed2,
-            activeColorSecondary: themeRed1),
+            activeColorPrimary: theme2,
+            activeColorSecondary: theme1),
         PersistentBottomNavBarItem(
             icon: const Icon(
               Icons.location_on,
-              color: themeRed1,
+              color: theme1,
             ),
             inactiveIcon: Icon(
               Icons.location_on_outlined,
               color: Colors.grey.shade800,
             ),
             title: ("Location"),
-            activeColorPrimary: themeRed2,
-            activeColorSecondary: themeRed1),
+            activeColorPrimary: theme2,
+            activeColorSecondary: theme1),
         PersistentBottomNavBarItem(
             icon: const Icon(
               Icons.notifications,
-              color: themeRed1,
+              color: theme1,
             ),
             inactiveIcon: Icon(
               Icons.notifications_none_outlined,
               color: Colors.grey.shade800,
             ),
             title: ("Notification"),
-            activeColorPrimary: themeRed2,
-            activeColorSecondary: themeRed1),
+            activeColorPrimary: theme2,
+            activeColorSecondary: theme1),
         PersistentBottomNavBarItem(
             icon: const Icon(
               Icons.settings,
-              color: themeRed1,
+              color: theme1,
             ),
             inactiveIcon: Icon(
               Icons.settings_outlined,
               color: Colors.grey.shade800,
             ),
             title: ("Settings"),
-            activeColorPrimary: themeRed2,
-            activeColorSecondary: themeRed1),
+            activeColorPrimary: theme2,
+            activeColorSecondary: theme1),
       ];
     }
 

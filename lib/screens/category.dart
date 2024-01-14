@@ -51,7 +51,7 @@ class _CategoryPageState extends State<CategoryPage> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Container(
-      color: themeRed1,
+      color: theme1,
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.transparent,
@@ -188,14 +188,11 @@ class _CategoryPageState extends State<CategoryPage> {
                                         rating: samplePosts[index].rating,
                                         id: index,
                                       ),
-                                      SizedBox(
-                                          height: height *
-                                              0.02), // Add SizedBox only when categories match
+                                      SizedBox(height: height * 0.02),
                                     ],
                                   );
                                 } else {
-                                  return const SizedBox
-                                      .shrink(); // If categories don't match, return an empty SizedBox
+                                  return const SizedBox.shrink();
                                 }
                               },
                             ),

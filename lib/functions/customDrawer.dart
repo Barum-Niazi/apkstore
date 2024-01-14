@@ -34,7 +34,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     'AppStash',
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
-                      color: themeRed1,
+                      color: theme1,
                       fontSize: 18.0,
                       fontFamily: 'Montserrat',
                     ),

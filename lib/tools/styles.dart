@@ -69,7 +69,7 @@ const textStyle12 = TextStyle(
 //
 const textStyle13 = TextStyle(
   fontSize: 14,
-  color: themeRed1,
+  color: theme1,
   fontWeight: FontWeight.bold,
 );
 const textStyle14 = TextStyle(

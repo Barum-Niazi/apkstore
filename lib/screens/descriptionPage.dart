@@ -105,8 +105,8 @@ class _descriptionScreenState extends State<descriptionScreen> {
 
   @override
   void initState() {
-    loadAd();
     fileStatus = fileExists(appList[0].name);
+    loadAd();
     super.initState();
   }
 
@@ -286,7 +286,7 @@ class _descriptionScreenState extends State<descriptionScreen> {
                                   Row(
                                     children: [
                                       const Icon(Icons.app_registration_rounded,
-                                          color: themeRed1),
+                                          color: theme1),
                                       SizedBox(
                                         width: width * 0.015,
                                       ),
@@ -304,7 +304,7 @@ class _descriptionScreenState extends State<descriptionScreen> {
                                     children: [
                                       const Icon(
                                         Icons.star_rate_rounded,
-                                        color: themeRed1,
+                                        color: theme1,
                                       ),
                                       SizedBox(
                                         width: width * 0.015,
@@ -323,7 +323,7 @@ class _descriptionScreenState extends State<descriptionScreen> {
                                     children: [
                                       const Icon(
                                         Icons.phone_android_sharp,
-                                        color: themeRed1,
+                                        color: theme1,
                                       ),
                                       SizedBox(
                                         width: width * 0.015,
@@ -458,7 +458,7 @@ class _descriptionScreenState extends State<descriptionScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(width * 0.05),
                             ),
-                            primary: themeRed1,
+                            primary: theme1,
                           ),
                           onPressed: () {
                             _interstitialAd!.show();
@@ -540,7 +540,7 @@ class _descriptionScreenState extends State<descriptionScreen> {
                                         backgroundColor: Colors.grey.shade200,
                                         valueColor:
                                             AlwaysStoppedAnimation<Color>(
-                                                themeRed1),
+                                                theme1),
                                       ),
                                     ),
                                     SizedBox(height: 10),

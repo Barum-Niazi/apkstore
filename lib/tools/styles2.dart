@@ -31,7 +31,7 @@ const lightTextStyle11 =
 const lightTextStyle12 =
     TextStyle(fontSize: 14, color: Colors.grey, fontWeight: FontWeight.bold);
 const lightTextStyle13 =
-    TextStyle(fontSize: 14, color: themeRed1, fontWeight: FontWeight.bold);
+    TextStyle(fontSize: 14, color: theme1, fontWeight: FontWeight.bold);
 const lightTextStyle14 =
     TextStyle(fontSize: 14, color: Colors.orange, fontWeight: FontWeight.bold);
 
@@ -64,6 +64,6 @@ const darkTextStyle11 =
 const darkTextStyle12 =
     TextStyle(fontSize: 14, color: Colors.grey, fontWeight: FontWeight.bold);
 const darkTextStyle13 =
-    TextStyle(fontSize: 14, color: themeRed1, fontWeight: FontWeight.bold);
+    TextStyle(fontSize: 14, color: theme1, fontWeight: FontWeight.bold);
 const darkTextStyle14 =
     TextStyle(fontSize: 14, color: Colors.orange, fontWeight: FontWeight.bold);

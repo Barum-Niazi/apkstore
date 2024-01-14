@@ -32,7 +32,7 @@ class _CategoryPageState extends State<CategoryPage> {
   }
 
   Future<List<AppInfo>> getData() async {
-    final response = await http.get(Uri.parse('http://192.168.0.112:3000'));
+    final response = await http.get(Uri.parse('http://192.168.18.12:3000'));
     var data = jsonDecode(response.body.toString());
     if (response.statusCode == 200) {
       List<AppInfo> posts = [];
@@ -98,7 +98,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                     onTap: () {
                                       Navigator.push(context, MaterialPageRoute(
                                         builder: (context) {
-                                          return HomePage();
+                                          return const HomePage();
                                         },
                                       ));
                                     },

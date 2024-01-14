@@ -32,7 +32,8 @@ class _CategoryPageState extends State<CategoryPage> {
   }
 
   Future<List<AppInfo>> getData() async {
-    final response = await http.get(Uri.parse('http://192.168.18.12:3000'));
+    final response =
+        await http.get(Uri.parse('https://appstash-api.onrender.com/'));
     var data = jsonDecode(response.body.toString());
     if (response.statusCode == 200) {
       List<AppInfo> posts = [];

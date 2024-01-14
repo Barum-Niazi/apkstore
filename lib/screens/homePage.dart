@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_apk_store/appinfo.dart';
 import 'package:flutter_apk_store/functions/customDrawer.dart';
@@ -9,7 +8,7 @@ import 'package:flutter_apk_store/tools/border.dart';
 import 'package:flutter_apk_store/tools/colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_apk_store/functions/appOverviewWidget.dart';
-
+import 'package:permission_handler/permission_handler.dart';
 import '../tools/styles.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,15 +22,23 @@ class _HomePageState extends State<HomePage> {
   String name = '';
   late TextEditingController searchController;
   late Future<List<AppInfo>> futureData;
+  late PermissionStatus _storagePermissionStatus;
+
   @override
   void initState() {
     super.initState();
     searchController = TextEditingController();
+    _requestStoragePermission();
     futureData = getData();
   }
 
+  Future<void> _requestStoragePermission() async {
+    _storagePermissionStatus = await Permission.storage.request();
+    // Handle the permission status accordingly
+  }
+
   Future<List<AppInfo>> getData() async {
-    final response = await http.get(Uri.parse('http://192.168.0.112:3000'));
+    final response = await http.get(Uri.parse('http://192.168.18.12:3000'));
     var data = jsonDecode(response.body.toString());
     if (response.statusCode == 200) {
       List<AppInfo> posts = [];

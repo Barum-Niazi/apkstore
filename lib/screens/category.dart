@@ -173,29 +173,28 @@ class _CategoryPageState extends State<CategoryPage> {
                               shrinkWrap: true,
                               itemCount: samplePosts.length,
                               itemBuilder: (context, index) {
-                                if (samplePosts[index].category ==
-                                    widget.category2) {
-                                  return Column(
-                                    children: [
-                                      if (samplePosts[index].category ==
-                                          widget.category2)
-                                        NewAppWidget(
-                                          width: width,
-                                          height: height,
-                                          appList: [
-                                            samplePosts[index],
-                                          ],
-                                          name: samplePosts[index].name,
-                                          imageName:
-                                              samplePosts[index].image1Url,
-                                          category: samplePosts[index].category,
-                                          rating: samplePosts[index].rating,
-                                          id: index,
-                                        ),
-                                      SizedBox(height: height * 0.02),
-                                    ],
-                                  );
-                                }
+                                // if (samplePosts[index].category ==
+                                //     widget.category2) {
+                                return Column(
+                                  children: [
+                                    if (samplePosts[index].category ==
+                                        widget.category2)
+                                      NewAppWidget(
+                                        width: width,
+                                        height: height,
+                                        appList: [
+                                          samplePosts[index],
+                                        ],
+                                        name: samplePosts[index].name,
+                                        imageName: samplePosts[index].image1Url,
+                                        category: samplePosts[index].category,
+                                        rating: samplePosts[index].rating,
+                                        id: index,
+                                      ),
+                                    SizedBox(height: height * 0.02),
+                                  ],
+                                );
+                                //}
                               },
                             ),
                             SizedBox(height: height * 0.02)

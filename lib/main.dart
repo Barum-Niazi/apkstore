@@ -25,8 +25,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   void getCurrentAppTheme() async {
-    themeChangeProvider.darkTheme =
-        await themeChangeProvider.darkThemePreference.getTheme();
+    themeChangeProvider.darkTheme = false;
   }
 
   @override
@@ -39,7 +38,7 @@ class _MyAppState extends State<MyApp> {
         builder: (BuildContext context, value, Widget? child) {
           return MaterialApp(
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
-            darkTheme: ThemeData.dark(),
+            darkTheme: ThemeData(),
             debugShowCheckedModeBanner: false,
             home: SplashScreen(),
             routes: <String, WidgetBuilder>{

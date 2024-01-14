@@ -1,40 +1,34 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_apk_store/appinfo.dart';
 import 'package:flutter_apk_store/functions/customDrawer.dart';
 import 'package:flutter_apk_store/screens/descriptionPage.dart';
 import 'package:flutter_apk_store/functions/newAppWidget.dart';
+import 'package:flutter_apk_store/screens/homeDark.dart';
 import 'package:flutter_apk_store/tools/border.dart';
 import 'package:flutter_apk_store/tools/colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_apk_store/functions/appOverviewWidget.dart';
-import 'package:permission_handler/permission_handler.dart';
+
 import '../tools/styles.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
+class CategoryPage extends StatefulWidget {
+  const CategoryPage({Key? key, required this.category2}) : super(key: key);
+  final String category2;
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<CategoryPage> createState() => _CategoryPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _CategoryPageState extends State<CategoryPage> {
   String name = '';
   late TextEditingController searchController;
   late Future<List<AppInfo>> futureData;
-  late PermissionStatus _storagePermissionStatus;
-
   @override
   void initState() {
     super.initState();
     searchController = TextEditingController();
-    _requestStoragePermission();
     futureData = getData();
-  }
-
-  Future<void> _requestStoragePermission() async {
-    _storagePermissionStatus = await Permission.storage.request();
-    // Handle the permission status accordingly
   }
 
   Future<List<AppInfo>> getData() async {
@@ -103,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      Scaffold.of(context).openDrawer();
+                                      Navigator.pop(context);
                                     },
                                     child: Container(
                                       padding: EdgeInsets.symmetric(
@@ -115,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                                             context, 0.03),
                                       ),
                                       child: Icon(
-                                        Icons.menu,
+                                        Icons.arrow_back,
                                         color: Colors.grey,
                                         size: width * 0.07,
                                       ),
@@ -133,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     child: Row(
                                       children: [
-                                        Flexible(
+                                        Expanded(
                                           child: TextField(
                                             controller: searchController,
                                             decoration: const InputDecoration(
@@ -146,18 +140,6 @@ class _HomePageState extends State<HomePage> {
                                               setState(() {
                                                 name = value;
                                               });
-                                            },
-                                            onSubmitted: (value) {
-                                              Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      descriptionScreen(
-                                                    appList: samplePosts,
-                                                    name: name,
-                                                    currentIndex: 4,
-                                                  ),
-                                                ),
-                                              );
                                             },
                                           ),
                                         ),
@@ -186,99 +168,35 @@ class _HomePageState extends State<HomePage> {
                                 ],
                               ),
                             ),
-                            SizedBox(height: height * 0.01),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: width * 0.03,
-                                vertical: height * 0.02,
-                              ),
-                              child: const Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Upcoming Titles',
-                                    style: textStyle2,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: width * 0.03),
-                              child: SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  children: [
-                                    AppOverViewWidget(
-                                      width: width,
-                                      height: height,
-                                      imageName: 'assets/pic6.jpg',
-                                    ),
-                                    GestureDetector(
-                                      child: Hero(
-                                        tag: 'pic3',
-                                        child: AppOverViewWidget(
-                                          width: width,
-                                          height: height,
-                                          imageName: 'assets/pic3.jpg',
-                                        ),
-                                      ),
-                                    ),
-                                    AppOverViewWidget(
-                                      width: width,
-                                      height: height,
-                                      imageName: 'assets/pic2.jpg',
-                                    ),
-                                    Hero(
-                                      tag: 'pic2',
-                                      child: AppOverViewWidget(
-                                        width: width,
-                                        height: height,
-                                        imageName: 'assets/pic5.jpg',
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: width * 0.03,
-                                vertical: height * 0.02,
-                              ),
-                              child: const Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'New Apps',
-                                    style: textStyle2,
-                                  ),
-                                ],
-                              ),
-                            ),
+                            SizedBox(height: height * 0.02),
                             ListView.builder(
                               physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: samplePosts.length,
                               itemBuilder: (context, index) {
-                                return Column(
-                                  children: [
-                                    NewAppWidget(
-                                      width: width,
-                                      height: height,
-                                      appList: [
-                                        samplePosts[index],
-                                      ],
-                                      name: samplePosts[index].name,
-                                      imageName: samplePosts[index].image1Url,
-                                      category: samplePosts[index].category,
-                                      rating: samplePosts[index].rating,
-                                      id: index,
-                                    ),
-                                    SizedBox(height: height * 0.02),
-                                  ],
-                                );
+                                if (samplePosts[index].category ==
+                                    widget.category2) {
+                                  return Column(
+                                    children: [
+                                      NewAppWidget(
+                                        width: width,
+                                        height: height,
+                                        appList: [samplePosts[index]],
+                                        name: samplePosts[index].name,
+                                        imageName: samplePosts[index].image1Url,
+                                        category: samplePosts[index].category,
+                                        rating: samplePosts[index].rating,
+                                        id: index,
+                                      ),
+                                      SizedBox(
+                                          height: height *
+                                              0.02), // Add SizedBox only when categories match
+                                    ],
+                                  );
+                                } else {
+                                  return const SizedBox
+                                      .shrink(); // If categories don't match, return an empty SizedBox
+                                }
                               },
                             ),
                             SizedBox(height: height * 0.02)

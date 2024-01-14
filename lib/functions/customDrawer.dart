@@ -13,8 +13,6 @@ class CustomDrawer extends StatefulWidget {
 }
 
 class _CustomDrawerState extends State<CustomDrawer> {
-  bool isSwitched = false;
-
   @override
   Widget build(BuildContext context) {
     //var darkThemeProvider = Provider.of<DarkThemeProvider>(context);
@@ -89,41 +87,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ));
             },
           ),
-          ListTile(
-            title: const Text('Settings'),
-            leading: const Icon(Icons.settings),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
           SizedBox(
             height: 20,
-          ),
-          Container(
-            height: MediaQuery.of(context).size.height * 0.1,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Switch(
-                  thumbIcon: MaterialStateProperty.all(
-                    Icon(
-                      isSwitched ? Icons.brightness_2 : Icons.brightness_7,
-                      color: Colors.white,
-                    ),
-                  ),
-                  // This bool value toggles the switch.
-                  value: isSwitched,
-                  activeColor: Colors.red,
-                  onChanged: (bool value) {
-                    // This is called when the user toggles the switch.
-                    setState(() {
-                      isSwitched = value;
-                      //  darkThemeProvider.darkTheme = value;
-                    });
-                  },
-                ),
-              ],
-            ),
           ),
         ],
       ),

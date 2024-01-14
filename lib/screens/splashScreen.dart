@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_apk_store/screens/homePage.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:page_transition/page_transition.dart';
-import '../tools/colors.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -10,26 +9,21 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      splash: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      splash: Stack(
+        alignment: Alignment.center,
         children: [
-          Image.asset('assets/pic1.png', height: 20.0),
-          const SizedBox(height: 20.0),
-          const Text(
-            'Bringing applications into\nyour daily routine',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20.0,
-            ),
-            textAlign: TextAlign.center,
-          ),
+          // Increased the image height for a larger space
+          Image.asset('assets/pic1.png', height: 250.0),
+          const SizedBox(height: 24.0),
         ],
       ),
-      splashIconSize: 100,
+      // Adjust the splashIconSize if needed
+      splashIconSize: 250,
       nextScreen: HomePage(),
       splashTransition: SplashTransition.fadeTransition,
       pageTransitionType: PageTransitionType.fade,
-      backgroundColor: themeRed1,
+      // Assuming the themeRed1 is a placeholder for the actual color from the uploaded image
+      backgroundColor: Colors.black, // Adjust to match the color from the image
       duration: 3000,
     );
   }

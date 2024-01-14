@@ -40,6 +40,8 @@ class _descriptionScreenState extends State<descriptionScreen> {
 
   int _total = 0, _received = 0;
   File? application;
+  final Dio dio = Dio();
+  CancelToken cancelToken = CancelToken();
   final List<AppInfo> appList;
   int currentIndex;
   final String name;
@@ -74,18 +76,18 @@ class _descriptionScreenState extends State<descriptionScreen> {
 
   Future<void> downloadAndSaveFile(String fileUrl, String name) async {
     try {
-      final dio = Dio();
       final response = await dio.get(
         fileUrl,
         onReceiveProgress: (received, total) {
           setState(() {
             _total = total;
             _received = received;
-            if (_received >= _total) {
-              progressText = 'Open';
-            }
+            if (received >= 1 && received < total)
+              progressText = 'Cancel';
+            else if (_received >= _total) progressText = 'Open';
           });
         },
+        cancelToken: cancelToken,
         options: Options(responseType: ResponseType.bytes),
       );
 
@@ -128,8 +130,28 @@ class _descriptionScreenState extends State<descriptionScreen> {
         print('Open file result: ${result.message}');
       }
     } else {
+      if (_received >= _total) {
+        cancelToken = CancelToken();
+      }
       downloadAndSaveFile(fileURL, name);
     }
+  }
+
+  void cancelDownload() {
+    if (!cancelToken.isCancelled) {
+      cancelToken.cancel("Download cancelled");
+      resetDownloadState();
+    }
+  }
+
+  void resetDownloadState() {
+    setState(() {
+      _total = 0;
+      _received = 0;
+      progressText = 'Download';
+      // Reset the file status future as well.
+      fileStatus = Future<bool>.value(false);
+    });
   }
 
   @override
@@ -404,8 +426,11 @@ class _descriptionScreenState extends State<descriptionScreen> {
                             primary: themeRed1,
                           ),
                           onPressed: () {
-                            downloadFile(
-                                currentApp.downloadLink, currentApp.name);
+                            if (progressText == 'Download' ||
+                                progressText == 'Open')
+                              downloadFile(
+                                  currentApp.downloadLink, currentApp.name);
+                            else if (progressText == 'Cancel') cancelDownload();
                           },
                           child: GestureDetector(
                             child: Container(

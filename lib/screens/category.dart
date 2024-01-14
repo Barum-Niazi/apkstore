@@ -191,7 +191,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                         rating: samplePosts[index].rating,
                                         id: index,
                                       ),
-                                    SizedBox(height: height * 0.02),
+                                    //  SizedBox(height: height * 0.02),
                                   ],
                                 );
                                 //}

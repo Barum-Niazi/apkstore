@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     child: Row(
                                       children: [
-                                        Expanded(
+                                        Flexible(
                                           child: TextField(
                                             controller: searchController,
                                             decoration: const InputDecoration(
@@ -139,6 +139,18 @@ class _HomePageState extends State<HomePage> {
                                               setState(() {
                                                 name = value;
                                               });
+                                            },
+                                            onSubmitted: (value) {
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      descriptionScreen(
+                                                    appList: samplePosts,
+                                                    name: name,
+                                                    currentIndex: 4,
+                                                  ),
+                                                ),
+                                              );
                                             },
                                           ),
                                         ),

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_apk_store/appinfo.dart';
 import 'package:flutter_apk_store/screens/homePage.dart';
@@ -5,10 +7,11 @@ import 'package:flutter_apk_store/screens/imageScreen.dart';
 import 'package:flutter_apk_store/tools/border.dart';
 import 'package:flutter_apk_store/tools/colors.dart';
 import 'package:flutter_apk_store/functions/downloadApp.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../tools/styles.dart';
 
-class descriptionScreen extends StatelessWidget {
+class descriptionScreen extends StatefulWidget {
   descriptionScreen({
     Key? key,
     required this.appList,
@@ -20,6 +23,22 @@ class descriptionScreen extends StatelessWidget {
   int currentIndex;
   final String name;
 
+  @override
+  State<descriptionScreen> createState() => _descriptionScreenState();
+}
+
+class _descriptionScreenState extends State<descriptionScreen> {
+  late InterstitialAd _interstitialAd;
+  final adUnitId = Platform.isAndroid
+      ? 'ca-app-pub-3940256099942544/1033173712'
+      : 'ca-app-pub-3940256099942544/4411468910';
+
+  @override
+  void initState() {
+    super.initState();
+    loadAd();
+  }
+
   int findIndex(List<AppInfo> appList, String name) {
     for (int i = 0; i < appList.length; i++) {
       if (appList[i].name.toLowerCase() == name.toLowerCase()) {
@@ -29,11 +48,61 @@ class descriptionScreen extends StatelessWidget {
     return 1;
   }
 
+  void loadAd() {
+    InterstitialAd.load(
+      adUnitId: adUnitId,
+      request: const AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (ad) {
+          ad.fullScreenContentCallback = FullScreenContentCallback(
+            onAdShowedFullScreenContent: (ad) {
+              debugPrint('InterstitialAd showed full screen content.');
+            },
+            onAdImpression: (ad) {
+              debugPrint('InterstitialAd impression recorded.');
+            },
+            onAdFailedToShowFullScreenContent: (ad, err) {
+              debugPrint(
+                  'InterstitialAd failed to show full screen content: $err');
+
+              ad.dispose();
+            },
+            onAdDismissedFullScreenContent: (ad) {
+              debugPrint('InterstitialAd dismissed full screen content.');
+
+              ad.dispose();
+            },
+            onAdClicked: (ad) {
+              debugPrint('InterstitialAd clicked.');
+            },
+          );
+
+          debugPrint('$ad loaded.');
+
+          _interstitialAd = ad;
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          debugPrint('InterstitialAd failed to load: $error');
+        },
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _interstitialAd.dispose();
+    super.dispose();
+  }
+
+  void showInterstitialAd() {
+    _interstitialAd.show();
+  }
+
   @override
   Widget build(BuildContext context) {
-    currentIndex = findIndex(appList, name);
+    widget.currentIndex = findIndex(widget.appList, widget.name);
 
-    AppInfo currentApp = appList[currentIndex];
+    AppInfo currentApp = widget.appList[widget.currentIndex];
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
 
@@ -301,6 +370,7 @@ class descriptionScreen extends StatelessWidget {
                             primary: themeRed1,
                           ),
                           onPressed: () {
+                            showInterstitialAd();
                             downloadApp(currentApp.downloadLink);
                           },
                           child: GestureDetector(

@@ -53,6 +53,9 @@ class _MyFormState extends State<MyForm> {
                     });
                   },
                   validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter image url';
+                    }
                     return null;
                   },
                 ),
@@ -64,6 +67,9 @@ class _MyFormState extends State<MyForm> {
                     });
                   },
                   validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter image url';
+                    }
                     return null;
                   },
                 ),
@@ -75,6 +81,9 @@ class _MyFormState extends State<MyForm> {
                     });
                   },
                   validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter image url';
+                    }
                     return null;
                   },
                 ),
@@ -86,6 +95,9 @@ class _MyFormState extends State<MyForm> {
                     });
                   },
                   validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter image url';
+                    }
                     return null;
                   },
                 ),
@@ -97,6 +109,9 @@ class _MyFormState extends State<MyForm> {
                     });
                   },
                   validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter description';
+                    }
                     return null;
                   },
                 ),
@@ -129,6 +144,9 @@ class _MyFormState extends State<MyForm> {
                     });
                   },
                   validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter download link';
+                    }
                     return null;
                   },
                 ),
@@ -140,31 +158,33 @@ class _MyFormState extends State<MyForm> {
                     });
                   },
                   validator: (value) {
-                    // Add validation logic if needed
+                    if (value!.isEmpty) {
+                      return 'Please enter size';
+                    }
                     return null;
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Rating'),
+                  decoration: const InputDecoration(labelText: 'Rating'),
                   onChanged: (value) {
                     setState(() {
                       rating = value;
                     });
                   },
                   validator: (value) {
-                    // Add validation logic if needed
+                    if (value!.isEmpty) {
+                      return 'Please enter rating';
+                    }
                     return null;
                   },
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: Colors.red,
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // Perform form submission logic here
-                      // You can print the values for now
                       print('Name: $name');
                       print('Logo Image URL: $logoImageUrl');
                       print('Display Image URL 1: $displayImageUrl1');
@@ -177,7 +197,7 @@ class _MyFormState extends State<MyForm> {
                       print('Rating: $rating');
                     }
                   },
-                  child: Text('Submit'),
+                  child: const Text('Submit'),
                 ),
               ],
             ),

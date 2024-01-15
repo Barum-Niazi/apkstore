@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_apk_store/screens/application_registration.dart';
 import 'package:flutter_apk_store/screens/category.dart';
 import 'package:flutter_apk_store/tools/colors.dart';
 
@@ -84,6 +85,18 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ));
             },
           ),
+          ListTile(
+            title: const Text('App Registration'),
+            leading: const Icon(Icons.add_to_photos_sharp),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return MyForm();
+                },
+              ));
+            },
+          ),
+
           SizedBox(
             height: 20,
           ),

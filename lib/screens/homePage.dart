@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       child: Center(
-                        child: Text('No Internet Connection'),
+                        child: Text('$snapshot.error'),
                       ),
                     );
                   } else {

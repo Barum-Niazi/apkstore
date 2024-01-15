@@ -85,7 +85,23 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else if (snapshot.hasError) {
-                    return Text('Error: ${snapshot.error}');
+                    return Container(
+                      width: width,
+                      height: height,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            backGroundColor1,
+                            backGroundColor2,
+                          ],
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
+                        ),
+                      ),
+                      child: Center(
+                        child: Text('No Internet Connection'),
+                      ),
+                    );
                   } else {
                     List<AppInfo> samplePosts = snapshot.data ?? [];
                     return Container(
@@ -153,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                                           child: TextField(
                                             controller: searchController,
                                             decoration: const InputDecoration(
-                                              hintText: 'Search...',
+                                              hintText: 'Subway Surfers',
                                               hintStyle: textStyle12,
                                               border: InputBorder.none,
                                             ),

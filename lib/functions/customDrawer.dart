@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_apk_store/screens/application_registration.dart';
+import 'package:flutter_apk_store/screens/appAdd.dart';
 import 'package:flutter_apk_store/screens/category.dart';
 import 'package:flutter_apk_store/tools/colors.dart';
 
@@ -96,7 +96,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ));
             },
           ),
-
           SizedBox(
             height: 20,
           ),

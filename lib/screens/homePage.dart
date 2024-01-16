@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<List<AppInfo>> getData() async {
     final response =
-        await http.get(Uri.parse('https://appstash-api.onrender.com/'));
+        await http.get(Uri.parse('https://appstash-api.onrender.com'));
     var data = jsonDecode(response.body.toString());
     if (response.statusCode == 200) {
       List<AppInfo> posts = [];
@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       child: Center(
-                        child: Text('$snapshot.error'),
+                        child: Text('Service could not be reached'),
                       ),
                     );
                   } else {

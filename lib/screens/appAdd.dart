@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
+// app addition screen
 class MyForm extends StatefulWidget {
   @override
   _MyFormState createState() => _MyFormState();
@@ -17,6 +20,35 @@ class _MyFormState extends State<MyForm> {
   String downloadLink = '';
   String size = '';
   String rating = '';
+  String buttonText = 'Submit';
+
+  Future<void> addNewApp() async {
+    var url = Uri.parse('https://appstash-api.onrender.com/add-app');
+    var response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'name': '$name',
+        'images': {
+          'logo': '$logoImageUrl',
+          'img1': '$displayImageUrl1',
+          'img2': '$displayImageUrl2',
+          'img3': '$displayImageUrl3',
+        },
+        'description': '$description',
+        'category': '$category',
+        'downloadLink': '$downloadLink',
+        'size': '$size',
+        'rating': '$rating',
+      }),
+    );
+
+    if (response.statusCode == 201) {
+      print('App added successfully');
+    } else {
+      print('Failed to add app. Status code: ${response.statusCode}');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -195,9 +227,17 @@ class _MyFormState extends State<MyForm> {
                       print('Download Link: $downloadLink');
                       print('Size: $size');
                       print('Rating: $rating');
+                      if (buttonText == 'Submit') {
+                        addNewApp();
+                        setState(() {
+                          buttonText = 'Submitted';
+                        });
+                      } else
+                        print('App already submitted.');
                     }
                   },
-                  child: const Text('Submit'),
+                  child: Text('$buttonText',
+                      style: TextStyle(color: Colors.black)),
                 ),
               ],
             ),
